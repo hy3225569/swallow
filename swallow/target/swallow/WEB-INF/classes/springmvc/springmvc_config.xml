@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jee="http://www.springframework.org/schema/jee"
+	   xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:util="http://www.springframework.org/schema/util"
+	   xmlns:aop="http://www.springframework.org/schema/aop" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	   xmlns:task="http://www.springframework.org/schema/task"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
+
+
+
+    <bean id="conversionService"    
+    class="org.springframework.format.support.FormattingConversionServiceFactoryBean"/>   
+    <mvc:annotation-driven     
+        conversion-service="conversionService" />    
+
+    <context:component-scan base-package="com.sea.swallow" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <context:include-filter type="annotation"
+                                expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
+        <context:include-filter type="annotation"
+                                expression="org.springframework.web.bind.annotation.ExceptionHandler"/>
+    </context:component-scan>
+
+    <bean id="mappingJacksonHttpMessageConverter"
+          class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+        <property name="supportedMediaTypes">
+            <list>
+                <value>text/html;charset=UTF-8</value>
+                <value>application/json;charset=UTF-8</value>
+            </list>
+        </property>
+        <property name="objectMapper">
+            <bean class="com.fasterxml.jackson.databind.ObjectMapper">
+                <property name="dateFormat">
+                    <bean class="java.text.SimpleDateFormat">
+                        <constructor-arg type="java.lang.String" value="yyyy-MM-dd HH:mm:ss"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <!--启动Spring MVC的注解功能，完成请求和注解POJO的映射 -->
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <property name="messageConverters">
+            <util:list id="beanList">
+                <ref bean="mappingJacksonHttpMessageConverter"/>
+            </util:list>
+        </property>
+    </bean>
+   <!-- 启用EL表达式 -->
+   <!--  <bean id="web" name="web" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass">
+            <value>org.springframework.web.servlet.view.JstlView</value>
+        </property>
+        <property name="prefix">
+            <value>/WEB-INF/web/jsp/</value>
+        </property>
+        <property name="suffix">
+            <value>.jsp</value>
+        </property>
+            <property name="basename" value="web"/>
+    </bean> -->
+    <!-- 	<bean id="wap" name="wap" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+            <property name="viewName"></property>
+            <property name="viewClass"><value>org.springframework.web.servlet.view.JstlView</value></property>
+            <property name="prefix"><value>/WEB-INF/wap/jsp/</value></property>
+            <property name="suffix"><value>.jsp</value></property>
+            <property name="order" value="1" />
+            <property name="basename" value="wap"/>
+        </bean> -->
+
+
+    <bean id="defaultHandlerMapping"
+          class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+        <property name="order" value="0"/>
+    </bean>
+
+    <bean id="hessianHandler" class="org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter"></bean>
+
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="utf-8"></property>
+        <!-- 默认最大10M -->
+        <property name="maxUploadSize" value="10485760"></property>
+    </bean>
+
+    <mvc:default-servlet-handler/>
+    
+    	<!--&lt;!&ndash;线程池&ndash;&gt;-->
+	<!--<bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">-->
+		<!--&lt;!&ndash; 核心线程数 &ndash;&gt;-->
+		<!--<property name="corePoolSize" value="${task.core_pool_size}" />-->
+		<!--&lt;!&ndash; 最大线程数 &ndash;&gt;-->
+		<!--<property name="maxPoolSize" value="${task.max_pool_size}" />-->
+		<!--&lt;!&ndash; 队列最大长度 &ndash;&gt;-->
+		<!--<property name="queueCapacity" value="${task.queue_capacity}" />-->
+		<!--&lt;!&ndash; 线程池维护线程所允许的空闲时间，默认为60s &ndash;&gt;-->
+		<!--<property name="keepAliveSeconds" value="${task.keep_alive_seconds}" />-->
+	<!--</bean>-->
+	<!-- 注解式 -->
+	<task:annotation-driven />
+
+</beans>
+

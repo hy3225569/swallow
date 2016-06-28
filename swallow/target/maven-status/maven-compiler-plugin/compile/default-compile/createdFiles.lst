@@ -1,0 +1,6 @@
+com\sea\swallow\controller\UrlController.class
+com\sea\swallow\ibll\IUserManage.class
+com\sea\swallow\controller\UserController.class
+com\sea\swallow\bll\UserManageImpl.class
+com\sea\swallow\dal\UserMapper.class
+com\sea\swallow\model\UserModel.class

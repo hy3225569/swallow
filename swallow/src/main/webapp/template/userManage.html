@@ -1,0 +1,38 @@
+<div class="col-lg-6">
+							<div class="panel">
+								<div class="panel-heading bk-bg-primary">
+									<h6><i class="fa fa-table red"></i><span class="break"></span>Basic</h6>							
+									<div class="panel-actions">								
+										<a href="table.html#" class="btn-setting"><i class="fa fa-rotate-right"></i></a>
+										<a href="table.html#" class="btn-minimize"><i class="fa fa-chevron-up"></i></a>
+										<a href="table.html#" class="btn-close"><i class="fa fa-times"></i></a>
+									</div>
+								</div>
+								<div class="panel-body">
+									<div class="table-responsive">
+										<table class="table" ng-controller="usercontroller">
+											  <thead>
+												  <tr>
+													  <th>编号</th>
+													  <th>学生姓名</th>
+													  <th>学生年龄</th>
+													  <th>学生地址</th>
+													  <th>操作</th>                                         
+												  </tr>
+											  </thead>   
+											  <tbody>
+												<tr  ng-repeat="user in userlist">
+													<td>{{user.id}}</td>
+													<td>{{user.stuname}}</td>
+													<td>{{user.stuage}}</td>
+													<td>{{user.stulocation}}</td>
+													<td>
+														<span class="label label-success">Active</span>
+													</td>                                       
+												</tr>							                                  
+											  </tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>						
