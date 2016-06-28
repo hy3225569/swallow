@@ -6,8 +6,8 @@
 
 require.config({
     paths: {
-        'angular': '/swallow/js/angular-1.5.6/angular.min',
-        'angular-route':'/swallow/js/angular-1.5.6/angular-route.min'
+				'angular' : '/js/angular-1.5.6/angular.min',
+				'angular-route' : '/js/angular-1.5.6/angular-route.min'
     },
     shim: {
         'app': {

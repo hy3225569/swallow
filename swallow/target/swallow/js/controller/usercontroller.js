@@ -6,7 +6,7 @@
 define(["app"],function(app){
 
             app.controller('usercontroller',function($scope,$http){
-            	 $http.get('/swallow/user/userlist')  
+            	 $http.get('/user/userlist')  
                  .success(function (data) {  
                 	  $scope.userlist=data;
                  })  

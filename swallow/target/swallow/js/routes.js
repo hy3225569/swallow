@@ -1,10 +1,10 @@
 define([], function()
 {
     return {
-        defaultRoutePath: '/upload/student/query.htmls',
+        defaultRoutePath: '/',
         routes: {
             '/userInfo': {
-                templateUrl: '/swallow/template/userManage.html',
+                templateUrl: '/template/userManage.html',
                 dependencies: [
                           'controller/usercontroller'
                 ]

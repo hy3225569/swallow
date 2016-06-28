@@ -10,48 +10,26 @@
 								</div>
 								<div class="panel-body">
 									<div class="table-responsive">
-										<table class="table">
+										<table class="table" ng-controller="usercontroller">
 											  <thead>
 												  <tr>
-													  <th>Employe</th>
-													  <th>Position</th>
-													  <th>Salary</th>
-													  <th>Status</th>                                          
+													  <th>编号</th>
+													  <th>学生姓名</th>
+													  <th>学生年龄</th>
+													  <th>学生地址</th>
+													  <th>操作</th>                                         
 												  </tr>
 											  </thead>   
 											  <tbody>
-												<tr>
-													<td>Willson</td>
-													<td>Developer</td>
-													<td>2563$</td>
+												<tr  ng-repeat="user in userlist">
+													<td>{{user.id}}</td>
+													<td>{{user.stuname}}</td>
+													<td>{{user.stuage}}</td>
+													<td>{{user.stulocation}}</td>
 													<td>
 														<span class="label label-success">Active</span>
 													</td>                                       
-												</tr>
-												<tr>
-													<td>James</td>
-													<td>SEO</td>
-													<td>5000$</td>
-													<td>
-														<span class="label label-danger">Banned</span>
-													</td>                                       
-												</tr>
-												<tr>
-													<td>Steven</td>
-													<td>Photographer</td>
-													<td>1269$</td>
-													<td>
-														<span class="label label-default">Inactive</span>
-													</td>                                        
-												</tr>
-												<tr>
-													<td>Aselay</td>
-													<td>Project manger</td>
-													<td>6253$</td>
-													<td>
-														<span class="label label-warning">Pending</span>
-													</td>                                       
-												</tr>									                                  
+												</tr>							                                  
 											  </tbody>
 										</table>
 									</div>

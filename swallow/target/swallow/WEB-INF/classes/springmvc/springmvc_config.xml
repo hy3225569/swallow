@@ -85,11 +85,11 @@
 
     <bean id="hessianHandler" class="org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter"></bean>
 
-    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+   <!--  <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="defaultEncoding" value="utf-8"></property>
-        <!-- 默认最大10M -->
+        默认最大10M
         <property name="maxUploadSize" value="10485760"></property>
-    </bean>
+    </bean> -->
 
     <mvc:default-servlet-handler/>
     
