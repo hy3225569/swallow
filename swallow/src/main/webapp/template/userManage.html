@@ -13,19 +13,19 @@
 										<table class="table" ng-controller="usercontroller">
 											  <thead>
 												  <tr>
-													  <th>编号</th>
-													  <th>学生姓名</th>
-													  <th>学生年龄</th>
-													  <th>学生地址</th>
+													  <th>用户编号</th>
+													  <th>用户姓名</th>
+													  <th>创建时间</th>
+													  <th>是否删除</th>
 													  <th>操作</th>                                         
 												  </tr>
 											  </thead>   
 											  <tbody>
 												<tr  ng-repeat="user in userlist">
-													<td>{{user.id}}</td>
-													<td>{{user.stuname}}</td>
-													<td>{{user.stuage}}</td>
-													<td>{{user.stulocation}}</td>
+													<td>{{user.userId}}</td>
+													<td>{{user.userName}}</td>
+													<td>{{user.createTime}}</td>
+													<td>{{user.beDeleted}}</td>
 													<td>
 														<span class="label label-success">Active</span>
 													</td>                                       

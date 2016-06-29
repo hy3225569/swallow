@@ -7,65 +7,67 @@ public class UserModel implements Serializable {
 	private static final long serialVersionUID = 5295431204819808159L;
 
 	/**
-	 *自增ID
+	 *用户编号
 	 */
-	private Integer id;
+	private Integer userId;
 	/**
-	 * 学生姓名
+	 * 用户姓名
 	 */
-	private String stuname;
+	private String userName;
 	/**
-	 * 学生年龄
+	 * 用户密码
 	 */
-	private Integer stuage;
+	private String userPass;
 	/**
-	 * 学生住址ַ
+	 *ַ用户权限
 	 */
-	private String stulocation;
+	private Integer roleId;
 
 	/**
-	 * 年级
+	 * 创建时间
 	 */
-	private Integer gradeid;
-
-	public Integer getId() {
-		return id;
+	private String createTime;
+	/**
+	 *是否删除 0否 1 是
+	 */
+    private Byte beDeleted;
+    
+	public Integer getUserId() {
+		return userId;
 	}
-
-	public void setId(Integer id) {
-		this.id = id;
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
-
-	public String getStuname() {
-		return stuname;
+	public String getUserName() {
+		return userName;
 	}
-
-	public void setStuname(String stuname) {
-		this.stuname = stuname;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
-
-	public Integer getStuage() {
-		return stuage;
+	public String getUserPass() {
+		return userPass;
 	}
-
-	public void setStuage(Integer stuage) {
-		this.stuage = stuage;
+	public void setUserPass(String userPass) {
+		this.userPass = userPass;
 	}
-
-	public String getStulocation() {
-		return stulocation;
+	public Integer getRoleId() {
+		return roleId;
 	}
-
-	public void setStulocation(String stulocation) {
-		this.stulocation = stulocation;
+	public void setRoleId(Integer roleId) {
+		this.roleId = roleId;
 	}
-
-	public Integer getGradeid() {
-		return gradeid;
+	public String getCreateTime() {
+		return createTime;
 	}
-
-	public void setGradeid(Integer gradeid) {
-		this.gradeid = gradeid;
+	public void setCreateTime(String createTime) {
+		this.createTime = createTime;
 	}
+	public Byte getBeDeleted() {
+		return beDeleted;
+	}
+	public void setBeDeleted(Byte beDeleted) {
+		this.beDeleted = beDeleted;
+	}
+	
 
 }

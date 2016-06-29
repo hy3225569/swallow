@@ -7,7 +7,8 @@
 require.config({
     paths: {
 				'angular' : '/js/angular-1.5.6/angular.min',
-				'angular-route' : '/js/angular-1.5.6/angular-route.min'
+				'angular-route' : '/js/angular-1.5.6/angular-route.min',
+				'register':'/js/controller/user/registercontroller'
     },
     shim: {
         'app': {

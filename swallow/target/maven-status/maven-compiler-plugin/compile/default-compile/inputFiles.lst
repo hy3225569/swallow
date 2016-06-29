@@ -1,7 +1,11 @@
 C:\Users\Administrator\swallow\swallow\src\main\java\com\sea\swallow\ibll\IUserManage.java
+C:\Users\Administrator\swallow\swallow\src\main\java\com\sea\swallow\model\ResultInfo.java
 C:\Users\Administrator\swallow\swallow\src\main\java\com\sea\swallow\controller\UserController.java
 C:\Users\Administrator\swallow\swallow\src\main\java\com\sea\swallow\dal\UserMapper.java
+C:\Users\Administrator\swallow\swallow\src\main\java\com\sea\swallow\common\MD5.java
 C:\Users\Administrator\swallow\swallow\src\main\java\com\sea\swallow\bll\UserManageImpl.java
 C:\Users\Administrator\swallow\swallow\src\main\java\com\sea\swallow\controller\UrlController.java
 C:\Users\Administrator\swallow\swallow\src\main\java\com\sea\swallow\common\AES.java
+C:\Users\Administrator\swallow\swallow\src\main\java\com\sea\swallow\common\JsonUtils.java
+C:\Users\Administrator\swallow\swallow\src\main\java\com\sea\swallow\common\JsonMapper.java
 C:\Users\Administrator\swallow\swallow\src\main\java\com\sea\swallow\model\UserModel.java

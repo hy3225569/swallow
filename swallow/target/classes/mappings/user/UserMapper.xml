@@ -2,6 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.sea.swallow.dal.UserMapper">
     <select id="selectUserInfo" resultType="com.sea.swallow.model.UserModel">
-        select ID id,StuName stuname,StuAge stuage,StuLocation stulocation,GradeId gradeid from student
+        select user_id userId,user_name userName,role_id roleId, create_time createTime,be_deleted beDeleted from tb_user
+    </select>
+    <!-- 插入用户基本信息 -->
+    <insert id="insertUser" parameterType="com.sea.swallow.model.UserModel">
+         insert into tb_user (user_name,user_pass,role_id,create_time,be_deleted)
+         values (#{userName},#{userPass},1,now(),0)
+    </insert>
+     
+    <!-- 判断用户是否唯一 -->
+    <select id="checkUique" resultType="int" parameterType="map">
+        select count(1) from tb_user t where t.user_name=#{userName} and be_deleted=0
     </select>
 </mapper>

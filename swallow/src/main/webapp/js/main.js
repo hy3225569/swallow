@@ -7,15 +7,21 @@
 require.config({
     paths: {
 				'angular' : '/js/angular-1.5.6/angular.min',
-				'angular-route' : '/js/angular-1.5.6/angular-route.min'
+				'angular-route' : '/js/angular-1.5.6/angular-route.min',
+				'register':'/js/controller/user/registercontroller',
+				'sweet-alert':'/assets/plugins/sweet-alert/js/sweet-alert.min'
     },
     shim: {
+    	'angular':{
+    		exports:'angular'
+    	},
         'app': {
             deps: ['angular', 'angular-route']
         },
         'angular-route': {
             deps: ['angular']
         }
+       
     }
 });
 
@@ -23,7 +29,7 @@ require.config({
 require
 (
     [
-        'app'
+        'app','register'
     ],
     function(app)
     {
