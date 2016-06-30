@@ -1,6 +1,7 @@
 package com.sea.swallow.ibll;
 
 import java.util.List;
+import java.util.Map;
 
 import com.sea.swallow.model.ResultInfo;
 import com.sea.swallow.model.UserModel;
@@ -22,4 +23,11 @@ public interface IUserManage {
     * @return
     */
    ResultInfo<String> userRegister(UserModel user);
+   
+   /**
+    * 用户登录
+    * @param map
+    * @return
+    */
+   ResultInfo<UserModel> userLogin(Map<String,Object> map); 
 }

@@ -8,8 +8,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 /**
  * @ClassName: JsonUtils
  * @Description: json 对象转换工具类
- * @author wq
- * @date 2016年4月19日 下午4:17:11
+ * @author hy
+ * @date 2016年6月30日 下午4:17:11
  */
 public class JsonUtils {
 

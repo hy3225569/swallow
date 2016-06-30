@@ -1,6 +1,7 @@
 package com.sea.swallow.bll;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -46,6 +47,19 @@ public class UserManageImpl implements IUserManage {
 		  return new ResultInfo<String>(-1," 注册失败","");
 	   }
 	   
+	}
+	/**
+	 * 用户登录
+	 */
+	@Override
+	public ResultInfo<UserModel> userLogin(Map<String, Object> map) {
+		
+		try {
+			
+		} catch (Exception e) {
+			
+		}
+		return null;
 	}
 
 }

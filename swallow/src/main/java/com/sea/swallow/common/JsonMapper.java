@@ -12,8 +12,8 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 /**
 * @ClassName: JsonMapper
 * @Description: 自定义 ObjectMapper
-* @author wq
-* @date 2016年4月6日 
+* @author hy
+* @date 2016年6月30日 
 */
 @SuppressWarnings({ "unchecked", "rawtypes" })
 public class JsonMapper extends ObjectMapper{

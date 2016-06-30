@@ -14,4 +14,18 @@
     <select id="checkUique" resultType="int" parameterType="map">
         select count(1) from tb_user t where t.user_name=#{userName} and be_deleted=0
     </select>
+    
+    <!-- 用户名和密码判断是否存在该用户 -->
+    <select id="selectByNameAndPass" resultType="int" parameterType="map">
+         select count(1) from tb_user 
+         <where>
+              <if test="userName!=null and userName!=''">
+                  user_name=#{userName} and
+              </if>
+              <if test="userPass!=null and userPass!=''">
+                  user_pass=#{userPass}
+              </if>
+              and be_deleted=0
+         </where>
+    </select>
 </mapper>

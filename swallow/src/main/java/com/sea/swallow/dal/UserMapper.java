@@ -26,4 +26,11 @@ public interface UserMapper {
     * @return
     */
    int checkUique(Map<String,Object> map);
+   
+   /**
+    * 根据用户名和密码判断用户是否存在
+    * @param map
+    * @return
+    */
+   int selectByNameAndPass(Map<String,Object> map);
 }

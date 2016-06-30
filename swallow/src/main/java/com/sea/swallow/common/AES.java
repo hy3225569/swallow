@@ -1,14 +1,3 @@
-/**  
-* @Title: AESII.java
-* @Package com.zhiduan.axp.tools.sign
-* @Project: axp-tools
-* @Description: (用一句话描述该文件做什么)
-* @author wdx
-* @date 2016年3月31日 下午8:06:29 
-* @version V1.0  
-* ──────────────────────────────────
-* Copyright (c) 2016, 指端科技.
-*/
 
 
     
@@ -29,8 +18,8 @@ import com.google.common.hash.Hashing;
 /**
 * @ClassName: AES
 * @Description: AES解密工具
-* @author wdx
-* @date 2016年3月31日 下午8:06:29 
+* @author hy
+* @date 2016年6月30日
 *
 */
 
@@ -47,8 +36,8 @@ public class AES {
      * @param @throws Exception    参数
      * @return String    返回类型
      * @throws
-     * @author wdx
-     * @date 2016年3月31日 下午11:45:18 
+     * @author hy
+     * @date 2016年6月30日
      **/
         
     public static String desEncrypt(String ciphertext,String publickey) throws Exception {
@@ -87,8 +76,8 @@ public class AES {
      * @param @throws Exception    参数
      * @return String    返回类型
      * @throws
-     * @author wdx
-     * @date 2016年4月1日 上午11:09:36 
+     * @author hy
+     * @date 2016年6月30日
      **/
         
     public static String encrypt(String plaintext,String publickey,String confusioncode) throws Exception {
@@ -133,8 +122,8 @@ public class AES {
 	 * @param @return    参数
 	 * @return String    返回类型
 	 * @throws
-	 * @author wdx
-	 * @date 2016年3月31日 下午11:44:55 
+	 * @author hy
+	 * @date 2016年6月30日 
 	 **/
 	    
 //	private static String MD5(String plain) {
@@ -172,8 +161,8 @@ public class AES {
 	 * @param @return    参数
 	 * @return String    返回类型
 	 * @throws
-	 * @author wdx
-	 * @date 2016年3月31日 下午11:44:55 
+	 * @author hy
+	 * @date 2016年6月30日
 	 **/
 	
 	private static String MD5II(String plain) {
