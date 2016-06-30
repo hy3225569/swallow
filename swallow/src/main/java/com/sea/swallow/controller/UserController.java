@@ -1,6 +1,7 @@
 package com.sea.swallow.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -33,6 +34,9 @@ public class UserController {
 	public List<UserModel> GetUserInfo(HttpServletRequest request)
 	{
 		try {
+			if(request.getSession().getAttribute("user")==null){
+				return null;
+			}
 			return userManageService.GetAllUserInfo();
 		} catch (Exception e) {
 			return new ArrayList<UserModel>();
@@ -51,9 +55,29 @@ public class UserController {
 		try {
 			String data=request.getParameter("data");
 			UserModel user=JsonUtils.readValue(data, UserModel.class);
-			return userManageService.userRegister(user);
+			return userManageService.userRegister(user,request);
 		} catch (Exception e) {
 			return new ResultInfo<String>(-1,"服务器错误!","");
+		}
+	}
+	/**
+	 * 用户登录
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value="/userlogin",method=RequestMethod.POST)
+	@ResponseBody
+	public ResultInfo<UserModel> userLogin(HttpServletRequest request)
+	{
+		try {
+			String userName=request.getParameter("userName")==null?"":request.getParameter("userName");
+			String userPass=request.getParameter("userPass")==null?"":request.getParameter("userPass");
+			HashMap<String,Object> map=new HashMap<>();
+			map.put("userName", userName);
+			map.put("userPass", userPass);
+			return userManageService.userLogin(map,request);
+		} catch (Exception e) {
+			return new ResultInfo<UserModel>(-1,"服务器错误!",null);
 		}
 	}
 }

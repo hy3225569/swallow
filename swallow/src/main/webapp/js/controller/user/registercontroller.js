@@ -8,7 +8,7 @@ define(["app","sweet-alert"],function(app){
 			$http({
 				url:"/user/userregiste",
 				method:'POST',
-				params:{"data":'{"userName":"test3","userPass":"123456"}'}
+				params:{"data":'{"userName":"'+$scope.userName+'","userPass":"'+$scope.userPass+'"}'}
 			}).success(function(data){
 				if(data.httpStatus==0){
 					sweetAlert("",data.message, "success");

@@ -9,6 +9,7 @@ require.config({
 				'angular' : '/js/angular-1.5.6/angular.min',
 				'angular-route' : '/js/angular-1.5.6/angular-route.min',
 				'register':'/js/controller/user/registercontroller',
+				'login':'/js/controller/user/logincontroller',
 				'sweet-alert':'/assets/plugins/sweet-alert/js/sweet-alert.min'
     },
     shim: {
@@ -29,7 +30,7 @@ require.config({
 require
 (
     [
-        'app','register'
+        'app','register','login'
     ],
     function(app)
     {

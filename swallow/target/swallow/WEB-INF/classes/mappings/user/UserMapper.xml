@@ -7,11 +7,31 @@
     <!-- 插入用户基本信息 -->
     <insert id="insertUser" parameterType="com.sea.swallow.model.UserModel">
          insert into tb_user (user_name,user_pass,role_id,create_time,be_deleted)
-         values (#{userName},#{userPass},#{roleId},now(),0)
+         values (#{userName},#{userPass},1,now(),0)
     </insert>
      
     <!-- 判断用户是否唯一 -->
-    <select id="checkUique" resultType="int" parameterMap="map">
-        select count(1) from tb_user t where t.user_name!=#{userName} and be_deleted=0
+    <select id="checkUique" resultType="int" parameterType="map">
+        select count(1) from tb_user t where t.user_name=#{userName} and be_deleted=0
+    </select>
+    
+    <!-- 用户名和密码判断是否存在该用户 -->
+    <select id="selectByNameAndPass" resultType="int" parameterType="map">
+         select count(1) from tb_user 
+         <where>
+              <if test="userName!=null and userName!=''">
+                  user_name=#{userName} and
+              </if>
+              <if test="userPass!=null and userPass!=''">
+                  user_pass=#{userPass}
+              </if>
+              and be_deleted=0
+         </where>
+    </select>
+    
+    <select id="selectUserByName" resultType="com.sea.swallow.model.UserModel" parameterType="java.lang.String">
+         select t.user_name,t.address,t.born_date,t.head_img,t.hobby,t.nick_name,t.role_id,
+         t.self_description,t.sex,t.user_id from tb_user t
+         where t.user_name=#{userName} and t.be_deleted=0
     </select>
 </mapper>

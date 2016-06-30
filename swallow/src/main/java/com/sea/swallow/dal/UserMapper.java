@@ -33,4 +33,11 @@ public interface UserMapper {
     * @return
     */
    int selectByNameAndPass(Map<String,Object> map);
+   
+   /**
+    * 根据用户名获取用户信息
+    * @param userName
+    * @return
+    */
+   UserModel selectUserByName(String userName);
 }

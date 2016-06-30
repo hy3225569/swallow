@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Service;
 
@@ -30,7 +31,7 @@ public class UserManageImpl implements IUserManage {
 	 * 用户注册
 	 */
 	@Override
-	public ResultInfo<String> userRegister(UserModel user) {
+	public ResultInfo<String> userRegister(UserModel user,HttpServletRequest request) {
 		//检测该用户是否注册过
 	   HashMap<String,Object> map=new HashMap<String,Object>();
 	   map.put("userName", user.getUserName());
@@ -42,7 +43,12 @@ public class UserManageImpl implements IUserManage {
 		  user.setUserPass(MD5.md5(user.getUserPass()));
 		  int result= userMapper.insertUser(user);
 		  if(result>0){
-			  return new ResultInfo<String>(0," 注册成功","");
+			  UserModel userInfo=userMapper.selectUserByName(user.getUserName());
+			  if(userInfo!=null){
+				  request.getSession().setAttribute("user",userInfo);
+				  return new ResultInfo<String>(0," 注册成功","");
+			  }
+			  return new ResultInfo<String>(-1,"请求服务器失败!","");
 		  }
 		  return new ResultInfo<String>(-1," 注册失败","");
 	   }
@@ -52,14 +58,28 @@ public class UserManageImpl implements IUserManage {
 	 * 用户登录
 	 */
 	@Override
-	public ResultInfo<UserModel> userLogin(Map<String, Object> map) {
+	public ResultInfo<UserModel> userLogin(Map<String, Object> map,HttpServletRequest request) {
 		
 		try {
-			
+			//密码md5加密操作
+			map.put("userPass", MD5.md5(map.get("userPass").toString()));
+			Boolean isLogin=userMapper.selectByNameAndPass(map)==1;
+			if(isLogin){
+				UserModel userInfo=userMapper.selectUserByName(map.get("userName").toString());
+				if(userInfo!=null)
+				{
+					request.getSession().setAttribute("user",userInfo);
+					return new ResultInfo<UserModel>(0,"登录成功!",userInfo);
+				}
+				return new ResultInfo<UserModel>(0,"请求服务器失败!",userInfo);
+			}
+			else
+			{
+				return new ResultInfo<UserModel>(-1,"用户名或密码错误!",null);
+			}
 		} catch (Exception e) {
-			
+			return new ResultInfo<UserModel>(-1,"向服务器请求异常!",null);
 		}
-		return null;
 	}
 
 }

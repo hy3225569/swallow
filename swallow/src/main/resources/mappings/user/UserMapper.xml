@@ -28,4 +28,10 @@
               and be_deleted=0
          </where>
     </select>
+    
+    <select id="selectUserByName" resultType="com.sea.swallow.model.UserModel" parameterType="java.lang.String">
+         select t.user_name,t.address,t.born_date,t.head_img,t.hobby,t.nick_name,t.role_id,
+         t.self_description,t.sex,t.user_id from tb_user t
+         where t.user_name=#{userName} and t.be_deleted=0
+    </select>
 </mapper>
