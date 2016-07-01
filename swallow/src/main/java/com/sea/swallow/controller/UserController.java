@@ -35,7 +35,7 @@ public class UserController {
 	{
 		try {
 			if(request.getSession().getAttribute("user")==null){
-				return null;
+				return new ArrayList<UserModel>();
 			}
 			return userManageService.GetAllUserInfo();
 		} catch (Exception e) {
