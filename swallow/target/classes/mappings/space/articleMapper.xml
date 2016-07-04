@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sea.swallow.dal.articleMapper">
+      <select id="selectArticleList"></select>
+       <insert id="insertArticle" parameterType="com.sea.swallow.model.ArticleModel">
+          insert into tb_article (user_id,article_type,write_time,title,status,content,discreption,open_type)
+          values (#{userId},#{articleType},now(),#{title},2,#{content},#{discreption},#{openType})
+       </insert>
+</mapper>
