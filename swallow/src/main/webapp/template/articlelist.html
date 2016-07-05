@@ -1,0 +1,86 @@
+<!-- Page Header -->
+<div class="page-header">
+	<div class="pull-left">
+		<ol class="breadcrumb visible-sm visible-md visible-lg">
+			<li><a href="index.html"><i class="icon fa fa-home"></i>Home</a></li>
+			<li><a href="#"><i class="fa fa-envelope"></i>Mail</a></li>
+			<li class="active"><i class="fa fa-inbox"></i>Inbox</li>
+		</ol>
+	</div>
+	<div class="pull-right">
+		<h2>Inbox</h2>
+	</div>
+</div>
+<!-- End Page Header -->
+<div class="row mailbox">
+	<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12" ng-include="'/template/spacenav.html'">
+		 
+	</div>
+	<div class="col-lg-9 col-md-8 col-sm-8 col-xs-12">
+		<div class="panel bk-bg-white">
+			<div class="panel-body mailbox-btn-action">
+				<div class="col-sm-8 col-xs-12 bk-padding-5 text-center">
+					<span class="item-action-group"> <a
+						class="item-action fa fa-envelope" href="#"></a> <a
+						class="item-action fa fa-star" href="#"></a> <a
+						class="item-action fa fa-star-o" href="#"></a> <a
+						class="item-action fa fa-bookmark-o" href="#"></a>
+					</span> <span class="item-action-group"> <a
+						class="item-action fa fa-mail-reply" href="#"></a> <a
+						class="item-action fa fa-mail-reply-all" href="#"></a> <a
+						class="item-action fa fa-mail-forward" href="#"></a>
+					</span> <span class="item-action-group"> <a
+						class="item-action fa fa-trash-o" href="#"></a> <a
+						class="item-action fa fa-refresh" href="#"></a> <a
+						class="item-action fa fa-tags" href="#"></a>
+					</span>
+				</div>
+				<div class="col-sm-4 col-xs-12">
+					<div class="search bk-padding-5">
+						<div class="input-group input-search">
+							<input type="text" class="form-control" name="q" id="q"
+								placeholder="Search..." /> <span class="input-group-btn">
+								<button class="btn btn-default" type="submit">
+									<i class="fa fa-search"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="panel bk-bg-white">
+			<div class="panel-body">
+				<div class="col-md-12">
+					<div
+						class="btn-group bk-margin-bottom-10 bk-margin-top-10 pull-right">
+						<button class="btn btn-sm btn-default">1-10 of 500</button>
+						<button class="btn btn-sm btn-default">
+							<span class="fa fa-chevron-left"></span>
+						</button>
+						<button class="btn btn-sm btn-default">
+							<span class="fa fa-chevron-right"></span>
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="panel-body">
+				<div class="col-md-12">
+					<ul class="messages-list">
+						<li class="unread"><a href="#/article" ng-repeat="article in articlelist">
+								<div class="header">
+									<span class="checkbox-custom"> <input type="checkbox"
+										> <label for="mailInbox"></label>
+									</span> <span class="from">{{article.userId}}</span> <span class="date">{{article.releaseTime}}</span>
+								</div>
+								<div class="title">
+									<span class="action"><i class="fa fa-star"></i></span>{{article.title}}
+								</div>
+								<div class="description">{{article.discreption}}</div>
+						</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

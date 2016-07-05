@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.sea.swallow.dal.articleMapper">
-      <select id="selectArticleList"></select>
+<mapper namespace="com.sea.swallow.dal.ArticleMapper">
+      <select id="selectArticleList" parameterType="map" resultType="com.sea.swallow.model.ArticleModel">
+            select t.title,t.discreption,t.release_time releaseTime,t.content,t.article_type articleType,
+            CASE t.article_type  WHEN 2 THEN "历史" ELSE "其他" END articleTypeName
+             from tb_article t where t.status=2
+      </select>
        <insert id="insertArticle" parameterType="com.sea.swallow.model.ArticleModel">
           insert into tb_article (user_id,article_type,write_time,title,status,content,discreption,open_type)
           values (#{userId},#{articleType},now(),#{title},2,#{content},#{discreption},#{openType})

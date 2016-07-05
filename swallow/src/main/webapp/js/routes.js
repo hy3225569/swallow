@@ -15,14 +15,14 @@ define([], function()
                           'controller/main/activitycontroller'
                 ]
             },
-            '/myspace': {
-                templateUrl: '/template/myspace.html',
-                dependencies: [
-                          'controller/myspace/spacecontroller'
-                ]
-            },
             '/article': {
                 templateUrl: '/template/article.html',
+                dependencies: [
+                          'controller/myspace/articlecontroller'
+                ]
+            },
+            '/articlelist': {
+                templateUrl: '/template/articlelist.html',
                 dependencies: [
                           'controller/myspace/articlecontroller'
                 ]
@@ -30,7 +30,7 @@ define([], function()
             '/writeblog': {
                 templateUrl: '/template/writeblog.html',
                 dependencies: [
-                         
+                       'controller/myspace/articlecontroller'
                 ]
             }
         }

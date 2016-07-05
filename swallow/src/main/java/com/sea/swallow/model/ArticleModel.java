@@ -45,6 +45,8 @@ public class ArticleModel implements Serializable{
 	 * 开放类型 1 对所有用户公开 2.仅对好友公开 3.仅自己可见
 	 */
 	private Byte openType;
+	
+	private String articleTypeName;
 	public Long getArticleId() {
 		return articleId;
 	}
@@ -104,6 +106,12 @@ public class ArticleModel implements Serializable{
 	}
 	public void setOpenType(Byte openType) {
 		this.openType = openType;
+	}
+	public String getArticleTypeName() {
+		return articleTypeName;
+	}
+	public void setArticleTypeName(String articleTypeName) {
+		this.articleTypeName = articleTypeName;
 	}
 	
 }

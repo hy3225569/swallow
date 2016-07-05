@@ -1,0 +1,101 @@
+<!-- Page Header -->
+<div class="page-header">
+	<div class="pull-left">
+		<ol class="breadcrumb visible-sm visible-md visible-lg">
+			<li><a href="index.html"><i class="icon fa fa-home"></i>我的空间</a></li>
+			<li><a href="#"><i class="fa fa-envelope"></i>我的文章</a></li>
+			<li class="active"><i class="fa fa-pencil-square-o"></i>写博文</li>
+		</ol>
+	</div>
+	<div class="pull-right">
+		<h2>空间</h2>
+	</div>
+</div>
+<!-- End Page Header -->
+<div class="row mailbox">
+	<div class="col-lg-3 col-md-3">
+		<div class="panel">
+			<div class="panel-body bk-bg-very-light-gray mailbox-menu">
+				<a href="page-inbox-compose.html" class="btn btn-primary btn-block">Compose</a>
+				<ul>
+					<li><a href="page-inbox.html">文章<span
+							class="label label-primary">165</span></a></li>
+					<li><a href="page-inbox-compose.html#">状态</a></li>
+					<li><a href="page-inbox-compose.html#">相册<span
+							class="label label-info">7</span></a></li>
+					<li><a href="page-inbox-compose.html#">草稿箱<span
+							class="label label-warning">3</span></a></li>
+					<li><a href="page-inbox-compose.html#"></i>计划</a></li>
+					<hr />
+					<h5 class="bk-fg-primary">Labels</h5>
+					<li><a href="page-inbox-compose.html#">Work <span
+							class="ball pink"></span></span></a></li>
+					<li><a href="page-inbox-compose.html#">Private <span
+							class="ball green"></span></a></li>
+					<li><a href="page-inbox-compose.html#">Clients <span
+							class="ball blue"></span></a></li>
+					<li><a href="page-inbox-compose.html#">Travel <span
+							class="ball orange"></span></a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="panel">
+			<div class="panel-body bk-bg-very-light-gray mailbox-chat">
+				<h5 class="bk-fg-primary">好友</h5>
+				<ul>
+					<li><span class="ball green"></span> Sarah Hiltser</li>
+					<li><span class="ball green"></span> Stephano Odo</li>
+					<li><span class="ball green"></span> Malras</li>
+					<li><span class="ball dark"></span> Derbi Mondro</li>
+					<li><span class="ball green"></span> Jessy Doe</li>
+					<li><span class="ball orange"></span> Gerry</li>
+					<li><span class="ball green"></span> Kevin</li>
+					<li><span class="ball yellow"></span> Carlina Minfa</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-9 col-md-9" ng-controller="articlecontroller">
+		<div class="panel bk-bg-white">
+			<div class="panel-body">
+				<form class="form-horizontal bk-margin-top-10" role="form">
+					<div class="form-group">
+						<label for="to" class="col-sm-2 control-label">标题:</label>
+						<div class="col-sm-12">
+							<input type="text" ng-model="article.title" class="form-control bk-border-off" id="to" />
+						</div>
+					</div>
+					<hr />
+					<div class="form-group">
+						<label for="cc" class="col-sm-2 control-label">简述:</label>
+						<div class="col-sm-12">
+							<textarea rows="2" ng-model="article.discreption" cols="" class="form-control bk-border-off"></textarea>
+						</div>
+					</div>
+					<hr />
+					<!-- <div class="form-group">
+						<label for="bcc" class="col-sm-1 control-label">BCC:</label>
+						<div class="col-sm-11">
+							<input type="email" class="form-control bk-border-off" id="bcc" />
+						</div>
+					</div>
+					<hr /> -->
+					
+					<div class="form-group">
+					   
+						<textarea ck-editor class="form-control ckeditor" ng-model="article.content" name="content"
+							id="content" rows="3"></textarea>
+							
+					</div>
+					<div
+						class="btn-group bk-padding-top-20 bk-padding-bottom-20 bk-padding-left-10">
+						<button type="button" class="btn btn-default">发布</button>
+						<button type="button" ng-click="save()" class="btn btn-default">保存</button>
+						<button type="button" class="btn btn-default">退出</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- <script src="/assets/ckeditor/ckeditor.js" type="text/javascript" charset="utf-8"></script> -->
