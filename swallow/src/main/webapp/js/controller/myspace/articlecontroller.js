@@ -16,8 +16,8 @@ define(["app","sweet-alert","ckeditor","ckeditordc"],function(app){
             			sweetAlert("","请求失败","error");
             		});
             	}
-		     $http.get('/space/articlelist').success(function(data) {
-			         $scope.articlelist = data;
+		     $http.get('/space/articlelogin').success(function(data) {
+			         $scope.articlelist = data.data;
 		      }).error(function(e) {
 			          console.log(e);
 		      });  

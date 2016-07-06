@@ -16,7 +16,7 @@
 	<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12" ng-include="'/template/spacenav.html'">
 		 
 	</div>
-	<div class="col-lg-9 col-md-8 col-sm-8 col-xs-12">
+	<div class="col-lg-9 col-md-8 col-sm-8 col-xs-12"  ng-controller="articlecontroller">
 		<div class="panel bk-bg-white">
 			<div class="panel-body mailbox-btn-action">
 				<div class="col-sm-8 col-xs-12 bk-padding-5 text-center">
@@ -67,17 +67,19 @@
 			<div class="panel-body">
 				<div class="col-md-12">
 					<ul class="messages-list">
-						<li class="unread"><a href="#/article" ng-repeat="article in articlelist">
-								<div class="header">
-									<span class="checkbox-custom"> <input type="checkbox"
-										> <label for="mailInbox"></label>
-									</span> <span class="from">{{article.userId}}</span> <span class="date">{{article.releaseTime}}</span>
-								</div>
+						<li class="unread" ng-repeat="article in articlelist">
+							<div class="header">
+								<span class="checkbox-custom"> <input type="checkbox">
+									<label for="mailInbox"></label>
+								</span> <span class="from">何毅</span> <span class="date"> Today,
+									08:45 AM</span>
+							</div> <a href="#/article">
 								<div class="title">
 									<span class="action"><i class="fa fa-star"></i></span>{{article.title}}
 								</div>
 								<div class="description">{{article.discreption}}</div>
-						</a></li>
+						     </a>
+						</li>
 					</ul>
 				</div>
 			</div>

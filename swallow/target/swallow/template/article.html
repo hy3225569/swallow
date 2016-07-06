@@ -2,60 +2,18 @@
 <div class="page-header">
 	<div class="pull-left">
 		<ol class="breadcrumb visible-sm visible-md visible-lg">
-			<li><a href="index.html"><i class="icon fa fa-home"></i>Home</a></li>
-			<li><a href="#"><i class="fa fa-envelope"></i>Mail</a></li>
-			<li class="active"><i class="fa fa-envelope-o"></i>Message</li>
+			<li><a href="index.html"><i class="icon fa fa-home"></i>我的空间</a></li>
+			<li><a href="#"><i class="fa fa-envelope"></i>博文</a></li>
+			<li class="active"><i class="fa fa-envelope-o"></i>阅读博文</li>
 		</ol>
 	</div>
 	<div class="pull-right">
-		<h2>Message</h2>
+		<h2>我的空间</h2>
 	</div>
 </div>
 <!-- End Page Header -->
 <div class="row mailbox" ng-controller="articlecontroller">
-	<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-		<div class="panel">
-			<div class="panel-body bk-bg-very-light-gray mailbox-menu">
-				<a href="page-inbox-compose.html" class="btn btn-primary btn-block">Compose</a>
-				<ul>
-					<li><a href="page-inbox.html">Inbox<span
-							class="label label-primary">165</span></a></li>
-					<li><a href="page-inbox-compose.html#">Stared</a></li>
-					<li><a href="page-inbox-compose.html#">Sent Mail</a></li>
-					<li><a href="page-inbox-compose.html#">Important<span
-							class="label label-info">7</span></a></li>
-					<li><a href="page-inbox-compose.html#">Draft<span
-							class="label label-warning">3</span></a></li>
-					<li><a href="page-inbox-compose.html#"></i>Trash</a></li>
-					<hr />
-					<h5 class="bk-fg-primary">Labels</h5>
-					<li><a href="page-inbox-compose.html#">Work <span
-							class="ball pink"></span></span></a></li>
-					<li><a href="page-inbox-compose.html#">Private <span
-							class="ball green"></span></a></li>
-					<li><a href="page-inbox-compose.html#">Clients <span
-							class="ball blue"></span></a></li>
-					<li><a href="page-inbox-compose.html#">Travel <span
-							class="ball orange"></span></a></li>
-				</ul>
-			</div>
-		</div>
-		<div class="panel">
-			<div class="panel-body bk-bg-very-light-gray mailbox-chat">
-				<h5 class="bk-fg-primary">Live Chat</h5>
-				<ul>
-					<li><span class="ball green"></span> Sarah Hiltser</li>
-					<li><span class="ball green"></span> Stephano Odo</li>
-					<li><span class="ball green"></span> Malras</li>
-					<li><span class="ball dark"></span> Derbi Mondro</li>
-					<li><span class="ball green"></span> Jessy Doe</li>
-					<li><span class="ball orange"></span> Gerry</li>
-					<li><span class="ball green"></span> Kevin</li>
-					<li><span class="ball yellow"></span> Carlina Minfa</li>
-				</ul>
-			</div>
-		</div>
-	</div>
+     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12" ng-include="'/template/spacenav.html'"></div>
 	<div class="col-lg-9 col-md-8 col-sm-8 col-xs-12">
 		<div class="panel bk-bg-white">
 			<div class="panel-body message mailbox-btn-action">
