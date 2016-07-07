@@ -1,6 +1,6 @@
-define(["app","sweet-alert","ckeditor","ckeditordc"],function(app){
+define(["app","sweet-alert","ckeditor","ckeditordc","ngsanitize"],function(app){
 
-            app.controller('articlecontroller',function($scope,$http){
+            app.controller('articlecontroller',['$scope','$http','$sce',function($scope,$http,$sce){
             	$scope.save=function(){
             		var json= JSON.stringify($scope.article);
             		$http.post("/space/writearticle",{data:json}).success(function(data){
@@ -21,5 +21,11 @@ define(["app","sweet-alert","ckeditor","ckeditordc"],function(app){
 		      }).error(function(e) {
 			          console.log(e);
 		      });  
-            });
+		     $http.post('/space/article',{articleId:41}).success(function(data) {
+		         $scope.article = (data.data)[0];
+		         $scope.htmlstr=$sce.trustAsHtml($scope.article.content);
+	          }).error(function(e) {
+		          console.log(e);
+	           });  
+            }]);
 });

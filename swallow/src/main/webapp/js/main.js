@@ -12,7 +12,8 @@ require.config({
 				'login':'/js/controller/user/logincontroller',
 				'sweet-alert':'/assets/plugins/sweet-alert/js/sweet-alert.min',
 				'ckeditor':'/assets/ckeditor/ckeditor',
-				'ckeditordc':'/js/directive/ckeditordc'
+				'ckeditordc':'/js/directive/ckeditordc',
+				'ngsanitize':'/js/angular-1.5.6/angular-sanitize.min'
     },
     shim: {
     	'angular':{
