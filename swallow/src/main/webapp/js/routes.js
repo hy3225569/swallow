@@ -32,6 +32,12 @@ define([], function()
                 dependencies: [
                        'controller/myspace/articlecontroller'
                 ]
+            },
+            '/mymainpage': {
+                templateUrl: '/template/mymainpage.html',
+                dependencies: [
+                       'controller/main/maincontroller'
+                ]
             }
         }
     };

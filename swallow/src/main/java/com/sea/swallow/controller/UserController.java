@@ -25,7 +25,7 @@ public class UserController {
 	private IUserManage userManageService;
 	
 	/**
-	 * 获取用户信息
+	 * 获取全部用户信息
 	 * @param request
 	 * @return
 	 */
@@ -33,13 +33,37 @@ public class UserController {
 	@ResponseBody
 	public List<UserModel> GetUserInfo(HttpServletRequest request)
 	{
+		HashMap<String,Object> map=new HashMap<>();
 		try {
 			if(request.getSession().getAttribute("user")==null){
 				return new ArrayList<UserModel>();
 			}
-			return userManageService.GetAllUserInfo();
+			return userManageService.GetAllUserInfo(map);
 		} catch (Exception e) {
 			return new ArrayList<UserModel>();
+		}
+		
+	}
+	/**
+	 * 获取我的主页的用户信息
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value="/mypageuserinfo",method=RequestMethod.GET)
+	@ResponseBody
+	public UserModel getMyPageUserInfo(HttpServletRequest request)
+	{
+		HashMap<String,Object> map=new HashMap<>();
+		try {
+			if(request.getSession().getAttribute("user")!=null){
+				UserModel user=(UserModel)(request.getSession().getAttribute("user"));
+				map.put("userId", user.getUserId());
+				return userManageService.GetAllUserInfo(map).get(0);
+			}
+			return null;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new UserModel();
 		}
 		
 	}

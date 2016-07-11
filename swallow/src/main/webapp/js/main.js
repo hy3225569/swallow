@@ -24,8 +24,7 @@ require.config({
         },
         'angular-route': {
             deps: ['angular']
-        }
-       
+        }  
     }
 });
 

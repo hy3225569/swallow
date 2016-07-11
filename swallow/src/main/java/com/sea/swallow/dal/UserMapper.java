@@ -11,7 +11,7 @@ public interface UserMapper {
 	 * 查询所有用户
 	 * @return
 	 */
-   List<UserModel> selectUserInfo();
+   List<UserModel> selectUserInfo(Map<String,Object> map);
    
    /**
     * 插入用户基本信息

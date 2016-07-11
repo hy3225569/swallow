@@ -1,0 +1,386 @@
+<!-- Page Header -->
+<div class="page-header">
+	<div class="pull-left">
+		<ol class="breadcrumb visible-sm visible-md visible-lg">
+			<li><a href="index.html"><i class="icon fa fa-home"></i>我的空间</a></li>
+			<li class="active"><i class="fa fa-reddit"></i>我的主页</li>
+		</ol>
+	</div>
+	<div class="pull-right">
+		<h2>我的主页</h2>
+	</div>
+</div>
+<!-- End Page Header -->
+<div class="row profile" ng-controller="maincontroller">
+	<div class="col-lg-4 col-md-5 col-sm-5">
+		<div class="panel">
+			<div class="panel-body">
+				<div
+					class="text-left bk-bg-white bk-padding-top-40 bk-padding-bottom-10">
+					<div class="row">
+						<div
+							class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bk-vcenter text-center">
+							<div class="bk-avatar">
+								<img src="/assets/img/avatar.jpg" alt="头像" title="更换头像"
+									class="img-circle bk-img-120 bk-border-light-gray bk-border-3x" />
+							</div>
+							<h4 class="bk-margin-top-10 bk-docs-font-weight-300">{{userinfo.nickName}}</h4>
+						</div>
+						<hr class="bk-margin-off" />
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<a
+								class="col-xs-4 bk-bg-white bk-fg-primary bk-padding-top-20 bk-padding-bottom-20 text-center">
+								<i class="fa fa-facebook"></i>
+							</a> <a
+								class="col-xs-4 bk-bg-white bk-fg-success bk-padding-top-20 bk-padding-bottom-20 text-center">
+								<i class="fa fa-twitter"></i>
+							</a> <a
+								class="col-xs-4 bk-bg-white bk-fg-danger bk-padding-top-20 bk-padding-bottom-20 text-center">
+								<i class="fa fa-google-plus"></i>
+							</a>
+						</div>
+						<div
+							class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-left bk-vcenter text-center">
+							<hr class="bk-margin-off" />
+							<small>HTML: 60%</small>
+							<div class="progress bk-margin-bottom-10" style="height: 8px;">
+								<div class="progress thin progress-striped active">
+									<div class="progress-bar progress-bar-primary"
+										role="progressbar" aria-valuenow="60" aria-valuemin="0"
+										aria-valuemax="100" style="width: 60%;">
+										<span class="sr-only">60% Complete</span>
+									</div>
+								</div>
+							</div>
+							<small>CSS: 88%</small>
+							<div class="progress bk-margin-bottom-10" style="height: 8px;">
+								<div class="progress thin progress-striped active">
+									<div class="progress-bar progress-bar-danger"
+										role="progressbar" aria-valuenow="88" aria-valuemin="0"
+										aria-valuemax="100" style="width: 88%;">
+										<span class="sr-only">88% Complete</span>
+									</div>
+								</div>
+							</div>
+							<small>JS: 35%</small>
+							<div class="progress bk-margin-off-bottom" style="height: 8px;">
+								<div class="progress thin progress-striped active">
+									<div class="progress-bar progress-bar-success"
+										role="progressbar" aria-valuenow="35" aria-valuemin="0"
+										aria-valuemax="100" style="width: 35%;">
+										<span class="sr-only">35% Complete</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<hr class="bk-margin-off" />
+				<div class="bk-ltr bk-bg-white">
+					<div class="row">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="bk-widget bk-border-off bk-webkit-fix">
+								<div
+									class="bk-bg-white text-center bk-padding-top-20 bk-padding-bottom-10">
+									<div class="row">
+										<div class="text-left bk-padding-left-10">
+											<h4 class="bk-margin-off">基本信息</h4>
+										</div>
+									</div>
+								</div>
+								<div class="bs-example">
+									<div id="carousel-example-generic3"
+										class="carousel bk-carousel-fade slide" data-ride="carousel">
+										<div class="carousel-inner">
+											<div class="item">
+												<a
+													class="panel-body bk-bg-white bk-bg-lighten bk-padding-off-top bk-padding-off-bottom">
+													<div class="pull-left bk-margin-top-10 bk-margin-right-10">
+														<div
+															class="bk-round bk-bg-darken bk-border-off bk-icon bk-icon-default bk-bg-primary">
+															<i class="fa fa-thumbs-up"></i>
+														</div>
+													</div>
+													<h5 class="bk-fg-primary bk-fg-darken bk-margin-off-bottom">出生日期</h5>
+													<p>
+														<small>{{userinfo.bornDate}}</small>
+													</p>
+												</a>
+											</div>
+											<div class="item active">
+												<a
+													class="panel-body bk-bg-white bk-bg-lighten bk-padding-off-top bk-padding-off-bottom">
+													<div class="pull-left bk-margin-top-10 bk-margin-right-10">
+														<div
+															class="bk-round bk-bg-darken bk-border-off bk-icon bk-icon-default bk-bg-info">
+															<i class="fa fa-building-o"></i>
+														</div>
+													</div>
+													<h5 class="bk-fg-info bk-fg-darken bk-margin-off-bottom">自我描述</h5>
+													<p>
+														<small>{{userinfo.selfDescription}}</small>
+													</p>
+												</a>
+											</div>
+										</div>
+										<a
+											class="left carousel-control bk-carousel-control bk-carousel-control-white bk-carousel-hide-init"
+											href="#carousel-example-generic3" role="button"
+											data-slide="prev"> <span
+											class="fa fa-angle-left icon-prev bk-bg-very-light-gray"></span>
+										</a> <a
+											class="right carousel-control bk-carousel-control bk-carousel-control-white bk-carousel-hide-init"
+											href="#carousel-example-generic3" role="button"
+											data-slide="next"> <span
+											class="fa fa-angle-right icon-next"></span>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<hr class="bk-margin-off" />
+				<div class="bk-ltr bk-bg-white">
+					<div class="row">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div
+								class="bk-bg-white text-center bk-padding-top-20 bk-padding-bottom-10">
+								<div class="row">
+									<div class="text-left bk-padding-left-10">
+										<h4 class="bk-margin-off">地址</h4>
+									</div>
+								</div>
+							</div>
+							<div
+								class="bk-bg-white bk-bg-lighten bk-padding-top-10 bk-padding-left-20">
+								<div class="pull-left bk-margin-right-10">
+									<div class="bk-round bk-bg-darken bk-border-off">
+										<i class="fa fa-map-marker fa-2x bk-fg-danger"></i>
+									</div>
+								</div>
+								<p class="text-left">
+									<small>{{userinfo.address}}</small>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="bk-ltr bk-padding-bottom-20 bk-padding-left-20">
+					<div class="row">
+						<div
+							class="col-12-4 col-md-12 col-sm-12 col-xs-12 bk-bg-white bk-padding-top-10">
+							<i class="fa fa-phone"></i> {{userinfo.phone}}
+						</div>
+						<div
+							class="col-12-4 col-md-12 col-sm-12 col-xs-12 bk-bg-white bk-padding-top-10">
+							<i class="fa fa-tablet"></i> {{userinfo.phone}}
+						</div>
+						<div
+							class="col-12-4 col-md-12 col-sm-12 col-xs-12 bk-bg-white bk-padding-top-10">
+							<i class="fa fa-envelope"></i> {{userinfo.userName}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-lg-5 col-md-7 col-sm-7">
+		<div class="panel">
+			<div class="panel-body">
+				<div class="tabs">
+					<ul class="nav nav-tabs">
+						<li class="active"><a href="#overview" data-toggle="tab">动态</a>
+						</li>
+						<li><a href="#edit" data-toggle="tab">完善资料</a></li>
+					</ul>
+					<div class="tab-content">
+						<div id="overview" class="tab-pane active">
+							<div class="bk-bg-white bk-padding-top-10 bk-padding-bottom-10">
+								<h4>更新状态</h4>
+								<div class="bk-bg-white">
+									<form role="form" action="javascript:">
+										<input type="text" ng-model="state.content" class="form-control"
+											placeholder="此刻你在想什么?" />
+									</form>
+								</div>
+								<div class="bk-bg-white bk-margin-15">
+									<div class="btn-group">
+										<button type="button" class="btn btn-link">
+											<i class="fa fa-map-marker"></i>
+										</button>
+										<button type="button" class="btn btn-link">
+											<i class="fa fa-camera"></i>
+										</button>
+										<button type="button" class="btn btn-link">
+											<i class="fa fa-video-camera"></i>
+										</button>
+									</div>
+									<div class="pull-right">
+										<button type="button" ng-click="updateStatus()" class="btn btn-primary">
+											<i class="fa fa-lightbulb-o"></i> 发布
+										</button>
+									</div>
+								</div>
+							</div>
+							<h5>时间轴</h5>
+							<div class="timelineProfile timeline-profile">
+								<div class="timeline-body">
+									<div class="timeline-title">
+										<h5 class="text-uppercase">September 2014</h5>
+									</div>
+									<ol class="timeline-items">
+										<li ng-repeat="state in statelist">
+											<div class="timeline-box">
+												<p class="text-muted">{{state.releaseTime}}</p>
+												<p>
+													{{state.content}}
+												</p>
+											</div>
+										</li>
+										
+										<!-- li>
+											<div class="timeline-box">
+												<p class="text-muted">5 months ago.</p>
+												<p>Checkout! How cool is that!</p>
+												<div class="img-timeline">
+													<a class="img-thumbnail lightbox"
+														href="/assets/img/gallery/photo5.jpg"
+														data-plugin-options='{ "type":"image" }'> <img
+														class="img-responsive" width="215"
+														src="/assets/img/gallery/photo5.jpg"> <span
+														class="zoom"> <i class="fa fa-search"></i>
+													</span>
+													</a>
+												</div>
+											</div>
+										</li> -->
+									</ol>
+								</div>
+							</div>
+						</div>
+						<div id="edit" class="tab-pane updateProfile">
+							<form class="form-horizontal" method="get">
+								<div class="bk-bg-white bk-padding-top-10 bk-padding-bottom-10">
+									<h4>Personal Information</h4>
+									<fieldset>
+										<div class="form-group">
+											<label for="profileFirstName">First Name</label> <input
+												type="text" class="form-control" id="profileFirstName"
+												placeholder="Enter your first name" />
+										</div>
+										<div class="form-group">
+											<label for="profileLastName">Last Name</label> <input
+												type="text" class="form-control" id="profileLastName"
+												placeholder="Enter your last name" />
+										</div>
+										<div class="form-group">
+											<label for="profileAddress">Address</label> <input
+												type="text" class="form-control" id="profileAddress"
+												placeholder="Enter your address" />
+										</div>
+										<div class="form-group">
+											<label for="profileCompany">Company</label> <input
+												type="text" class="form-control" id="profileCompany"
+												placeholder="Enter your company name" />
+										</div>
+									</fieldset>
+									<hr />
+									<h4>About Yourself</h4>
+									<fieldset>
+										<div class="form-group">
+											<label for="profileBio">Biographical Info</label>
+											<textarea class="form-control" rows="5" id="profileBio"
+												placeholder="Start typing"></textarea>
+										</div>
+										<div class="form-group">
+											<div
+												class="checkbox-custom checkbox-default bk-margin-bottom-10">
+												<input type="checkbox" id="profilePublish"
+													name="profilePublish" value="profilePublish" /> <label
+													for="profilePublish"> Publish</label>
+											</div>
+										</div>
+									</fieldset>
+									<hr />
+									<h4>Change Password</h4>
+									<fieldset>
+										<div class="form-group">
+											<label for="profileNewPassword">新密码</label> <input
+												type="text" class="form-control" id="profileNewPassword"
+												placeholder="Type New Password" />
+										</div>
+										<div class="form-group">
+											<label for="profileNewPasswordRepeat">旧密码</label> <input type="text" class="form-control"
+												id="profileNewPasswordRepeat"
+												placeholder="Retype New Password" />
+										</div>
+									</fieldset>
+									<div class="bk-bg-white">
+										<div class="row">
+											<div class="col-md-12">
+												<div class="pull-right">
+													<button type="submit" class="btn btn-primary">保存</button>
+													<button type="reset" class="btn btn-default">重置</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-3 col-md-12">
+		
+		
+		<div class="panel panel-default">
+			<div class="panel-heading bk-bg-white">
+				<h6>
+					<span class="label label-danger bk-margin-5">165</span>朋友
+				</h6>
+				<div class="panel-actions">
+					<a href="#" class="btn-minimize"><i class="fa fa-caret-up"></i></a>
+					<a href="#" class="btn-close"><i class="fa fa-times"></i></a>
+				</div>
+			</div>
+			<div class="panel-body bk-noradius">
+				<div ng-repeat="friend in friendList">
+					<a class="bk-bg-white bk-padding-off-top bk-padding-off-bottom">
+						<div class="row">
+							<div class="col-xs-3 bk-vcenter text-center bk-padding-10">
+								<div class="bk-avatar">
+									<img src="/assets/img/avatar1.jpg" alt=""
+										class="img-circle bk-img-40 bk-border-primary bk-border-2x bk-border-darken">
+								</div>
+							</div>
+							<div class="col-xs-9 bk-vcenter">
+								<h5 class="bk-fg-primary bk-fg-darken bk-margin-off-bottom">{{friend.friendNickName}}</h5>
+								<p>{{friend.friendSelfDescription}}</p>
+							</div>
+						</div>
+					</a>
+					<hr class="bk-margin-off">
+				</div>
+			</div>
+			<div class="panel-footer bk-bg-white">
+				<div class="bk-padding-top-5 bk-padding-bottom-5 ">
+					<div class="row">
+						<div class="col-xs-6">
+							<a href="#" class="bk-fg-textcolor"><small><i
+									class="fa fa-angle-left"></i> PREVIOUS</small></a>
+						</div>
+						<div class="col-xs-6 text-right">
+							<a href="#" class="bk-fg-textcolor"><small>NEXT <i
+									class="fa fa-angle-right"></i></small></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

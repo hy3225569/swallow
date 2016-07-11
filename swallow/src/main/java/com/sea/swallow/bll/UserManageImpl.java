@@ -24,8 +24,8 @@ public class UserManageImpl implements IUserManage {
 	@Resource(name="userMapper")
 	private UserMapper userMapper;
 	@Override
-	public List<UserModel> GetAllUserInfo() {
-	   return userMapper.selectUserInfo();
+	public List<UserModel> GetAllUserInfo(Map<String,Object> map) {
+	   return userMapper.selectUserInfo(map);
 	}
 	/**
 	 * 用户注册

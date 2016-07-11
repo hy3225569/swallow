@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sea.swallow.dal.MyPageMapper">
+    <select id="selectFriend" resultType="com.sea.swallow.model.UserRelationInfo" parameterType="map">
+	select t.user_id userId,t.friend_id friendId,t2.user_name
+	userName,t3.nick_name friendNickName,t3.self_description
+	friendSelfDescription,t3.user_name friendName from tb_user_relation t
+	LEFT JOIN tb_user t2
+	ON t.user_id=t2.user_id
+	LEFT JOIN tb_user t3 ON t3.user_id=t.friend_id
+	<where>
+	1=1
+	   <if test="userId!=null">
+	    and t.user_id=#{userId}   
+	   </if>
+	</where>
+    </select>
+</mapper>

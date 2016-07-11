@@ -15,10 +15,10 @@ import com.sea.swallow.model.UserModel;
  */
 public interface IUserManage {
 	/**
-	 * 获取所有用户集合
+	 * 获取所有用户集合(含条件 map)
 	 * @return
 	 */
-   List<UserModel> GetAllUserInfo();
+   List<UserModel> GetAllUserInfo(Map<String,Object> map);
    /**
     * 用户注册
     * @param user

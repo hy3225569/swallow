@@ -39,7 +39,6 @@ public class ArticleManage implements IArticleManage {
 				model.setUserId(0);
 				if (request.getSession().getAttribute("user") != null) {
 					model.setUserId(((UserModel)request.getSession().getAttribute("user")).getUserId());
-					System.out.println(model.getUserId());
 				}
 				if (checkArticleForm(model)) {
 					return articleMapper.insertArticle(model) > 0 ? new ResultInfo<String>(0, "发布成功", "")
