@@ -39,4 +39,20 @@ public class MainController {
 			return null;
 		}
      }
+	 
+	 /**
+		 *  更新用户信息
+		 * 
+		 * @param request
+		 * @return
+		 */
+		@RequestMapping("/updateuserinfo")
+		@ResponseBody
+		public ResultInfo<String> updateUserInfo(HttpServletRequest request) {
+			try {
+				return mainService.editUserInfo(request);
+			} catch (Exception e) {
+				return new ResultInfo<String>(-1, "服务器请求失败", "");
+			}
+		}
 }

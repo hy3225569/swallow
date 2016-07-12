@@ -6,12 +6,14 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sea.swallow.common.CookieUtils;
 import com.sea.swallow.common.JsonUtils;
 import com.sea.swallow.ibll.IUserManage;
 import com.sea.swallow.model.ResultInfo;
@@ -91,17 +93,31 @@ public class UserController {
 	 */
 	@RequestMapping(value="/userlogin",method=RequestMethod.POST)
 	@ResponseBody
-	public ResultInfo<UserModel> userLogin(HttpServletRequest request)
+	public ResultInfo<UserModel> userLogin(HttpServletRequest request,HttpServletResponse response)
 	{
 		try {
 			String userName=request.getParameter("userName")==null?"":request.getParameter("userName");
 			String userPass=request.getParameter("userPass")==null?"":request.getParameter("userPass");
+			String rememberMe=request.getParameter("rememberMe")==null?"":request.getParameter("rememberMe");
 			HashMap<String,Object> map=new HashMap<>();
 			map.put("userName", userName);
 			map.put("userPass", userPass);
-			return userManageService.userLogin(map,request);
+			map.put("rememberMe", rememberMe);
+			return userManageService.userLogin(map,request,response);
 		} catch (Exception e) {
 			return new ResultInfo<UserModel>(-1,"服务器错误!",null);
+		}
+	}
+	
+	@RequestMapping(value="/cookie")
+	@ResponseBody
+	public ResultInfo<String> getCookie(HttpServletRequest request,HttpServletResponse response)
+	{
+		try {
+			return new ResultInfo<String>(0,"",CookieUtils.getCookie(request,response,"userName",true).toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
 		}
 	}
 }

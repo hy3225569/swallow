@@ -28,4 +28,5 @@ define(["app","sweet-alert","ckeditor","ckeditordc","ngsanitize"],function(app){
 		          console.log(e);
 	           });  
             }]);
+            
 });

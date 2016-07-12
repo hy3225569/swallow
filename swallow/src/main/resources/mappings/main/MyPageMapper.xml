@@ -15,4 +15,40 @@
 	   </if>
 	</where>
     </select>
+   <update id="updateUserInfo" parameterType="com.sea.swallow.model.UserModel">
+       
+       UPDATE tb_user
+       <set>
+          <if test="nickName!=null and nickName!=''">
+             nick_name=#{nickName},
+          </if>
+          <if test="sex!=null">
+             sex=#{sex},
+          </if>
+           <if test="address!=null">
+             address=#{address},
+          </if>
+           <if test="hobby!=null">
+             hobby=#{hobby},
+          </if>
+           <if test="phone!=null">
+             phone=#{phone},
+          </if>
+           <if test="selfDescription!=null">
+             self_description=#{selfDescription},
+          </if>
+           <if test="bornDate!=null and bornDate!=''">
+             born_date=#{bornDate},
+          </if>
+           <if test="headImg!=null and headImg!=''">
+             head_img=#{headImg},
+          </if>
+          <if test="userPass!=null and userPass!=''">
+            user_pass=#{userPass}
+          </if>
+       </set>
+       <where>
+           user_id=#{userId}
+       </where>
+   </update>
 </mapper>

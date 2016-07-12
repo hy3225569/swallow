@@ -55,6 +55,7 @@ public class UserModel implements Serializable {
 	 * 爱好
 	 */
 	private String hobby;
+	
 	/**
 	 * 手机号
 	 */
@@ -67,6 +68,8 @@ public class UserModel implements Serializable {
 	 * 地址
 	 */
 	private String address;
+	
+	private Byte rememberMe;
 	public String getSelfDescription() {
 		return selfDescription;
 	}
@@ -180,5 +183,14 @@ public class UserModel implements Serializable {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+
+	public Byte getRememberMe() {
+		return rememberMe;
+	}
+
+	public void setRememberMe(Byte rememberMe) {
+		this.rememberMe = rememberMe;
+	}
+
 
 }

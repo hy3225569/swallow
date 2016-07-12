@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.sea.swallow.dal.StateMapper">
       <select id="selectStateList" parameterType="map" resultType="com.sea.swallow.model.StateModel">
-	select a.user_id userId,a.content,date_format(a.release_time,'%Y-%m-%d %h:%i:%s') releaseTime,a.state_id
+	select a.user_id userId,a.content,date_format(a.release_time,'%Y-%m-%d %H:%i:%s') releaseTime,a.state_id
 	stateId from tb_state a LEFT JOIN tb_user b ON a.user_id=b.user_id
 	<where>
 		1=1

@@ -193,7 +193,7 @@
 					<ul class="nav nav-tabs">
 						<li class="active"><a href="#overview" data-toggle="tab">动态</a>
 						</li>
-						<li><a href="#edit" data-toggle="tab">完善资料</a></li>
+						<li><a href="#edit" data-toggle="tab">基本资料</a></li>
 					</ul>
 					<div class="tab-content">
 						<div id="overview" class="tab-pane active">
@@ -201,8 +201,8 @@
 								<h4>更新状态</h4>
 								<div class="bk-bg-white">
 									<form role="form" action="javascript:">
-										<input type="text" ng-model="state.content" class="form-control"
-											placeholder="此刻你在想什么?" />
+										<input type="text" ng-model="state.content"
+											class="form-control" placeholder="此刻你在想什么?" />
 									</form>
 								</div>
 								<div class="bk-bg-white bk-margin-15">
@@ -218,7 +218,8 @@
 										</button>
 									</div>
 									<div class="pull-right">
-										<button type="button" ng-click="updateStatus()" class="btn btn-primary">
+										<button type="button" ng-click="updateStatus()"
+											class="btn btn-primary">
 											<i class="fa fa-lightbulb-o"></i> 发布
 										</button>
 									</div>
@@ -228,18 +229,16 @@
 							<div class="timelineProfile timeline-profile">
 								<div class="timeline-body">
 									<div class="timeline-title">
-										<h5 class="text-uppercase">September 2014</h5>
+										<h5 class="text-uppercase">全部状态</h5>
 									</div>
 									<ol class="timeline-items">
 										<li ng-repeat="state in statelist">
 											<div class="timeline-box">
 												<p class="text-muted">{{state.releaseTime}}</p>
-												<p>
-													{{state.content}}
-												</p>
+												<p>{{state.content}}</p>
 											</div>
 										</li>
-										
+
 										<!-- li>
 											<div class="timeline-box">
 												<p class="text-muted">5 months ago.</p>
@@ -261,67 +260,117 @@
 							</div>
 						</div>
 						<div id="edit" class="tab-pane updateProfile">
-							<form class="form-horizontal" method="get">
+							<form action="" method="post" enctype="multipart/form-data"
+								class="form-horizontal ">
 								<div class="bk-bg-white bk-padding-top-10 bk-padding-bottom-10">
-									<h4>Personal Information</h4>
+									<h4>个人信息</h4>
 									<fieldset>
 										<div class="form-group">
-											<label for="profileFirstName">First Name</label> <input
-												type="text" class="form-control" id="profileFirstName"
-												placeholder="Enter your first name" />
+											<label class="col-md-3 control-label" for="text-input">昵称</label>
+											<div class="col-md-9">
+												<input type="text" ng-model="userinfo.nickName"
+													id="text-input" name="text-input" class="form-control"
+													placeholder="Text">
+											</div>
 										</div>
 										<div class="form-group">
-											<label for="profileLastName">Last Name</label> <input
-												type="text" class="form-control" id="profileLastName"
-												placeholder="Enter your last name" />
+											<label class="col-md-3 control-label" for="email-input">手机号</label>
+											<div class="col-md-9">
+												<input type="text" ng-model="userinfo.phone"
+													id="email-input" name="email-input" class="form-control"
+													placeholder="Email address">
+											</div>
+										</div>
+
+										<div class="form-group">
+											<label class="col-md-3 control-label" for="disabled-input">地址</label>
+											<div class="col-md-9">
+												<input type="text" ng-model="userinfo.address"
+													id="disabled-input" name="disabled-input"
+													class="form-control" placeholder="地址">
+											</div>
+										</div>
+
+
+										<div class="form-group">
+											<label class="col-md-3 control-label" for="select">Select</label>
+											<div class="col-md-9">
+												<select id="select" name="select" class="form-control"
+													size="1">
+													<option value="0">Please select</option>
+													<option value="1">Option #1</option>
+													<option value="2">Option #2</option>
+													<option value="3">Option #3</option>
+												</select>
+											</div>
+										</div>
+
+										<div class="form-group">
+											<label class="col-md-3 control-label">性别</label>
+											<div class="col-md-9">
+												<div class="radio-custom radio-inline">
+													<input type="radio" id="inline-radio1"
+														ng-model="userinfo.sex" name="inline-radios" value="1">
+													<label for="inline-radio1"> 男</label>
+												</div>
+												<div class="radio-custom radio-inline">
+													<input type="radio" id="inline-radio2"
+														ng-model="userinfo.sex" name="inline-radios" value="2">
+													<label for="inline-radio2"> 女</label>
+												</div>
+											</div>
 										</div>
 										<div class="form-group">
-											<label for="profileAddress">Address</label> <input
-												type="text" class="form-control" id="profileAddress"
-												placeholder="Enter your address" />
-										</div>
-										<div class="form-group">
-											<label for="profileCompany">Company</label> <input
-												type="text" class="form-control" id="profileCompany"
-												placeholder="Enter your company name" />
-										</div>
-									</fieldset>
-									<hr />
-									<h4>About Yourself</h4>
-									<fieldset>
-										<div class="form-group">
-											<label for="profileBio">Biographical Info</label>
-											<textarea class="form-control" rows="5" id="profileBio"
-												placeholder="Start typing"></textarea>
-										</div>
-										<div class="form-group">
-											<div
-												class="checkbox-custom checkbox-default bk-margin-bottom-10">
-												<input type="checkbox" id="profilePublish"
-													name="profilePublish" value="profilePublish" /> <label
-													for="profilePublish"> Publish</label>
+											<label class="col-md-3 control-label">爱好</label>
+											<div class="col-md-9">
+												<div class="checkbox-custom checkbox-inline"
+													ng-repeat="hobby in hobbys">
+													<input type="checkbox" value="{{hobby}}"
+														check-list='checked_hobbys'> <label
+														for="inline-checkbox1"> {{hobby}}</label>
+												</div>
 											</div>
 										</div>
 									</fieldset>
 									<hr />
-									<h4>Change Password</h4>
+									<h4>关于自己</h4>
 									<fieldset>
 										<div class="form-group">
-											<label for="profileNewPassword">新密码</label> <input
-												type="text" class="form-control" id="profileNewPassword"
-												placeholder="Type New Password" />
+											<label class="col-md-3 control-label" for="profileBio">自我描述</label>
+											<div class="col-md-9">
+												<textarea ng-model="userinfo.selfDescription"
+													class="form-control" rows="5" id="profileBio"
+													placeholder="Start typing"></textarea>
+											</div>
+										</div>
+
+									</fieldset>
+									<hr />
+									<h4>修改密码</h4>
+									<fieldset>
+										<div class="form-group">
+											<label class="col-md-3 control-label"
+												for="profileNewPassword">新密码</label>
+											<div class="col-md-9">
+												<input type="text" class="form-control"
+													id="profileNewPassword" placeholder="新密码" />
+											</div>
 										</div>
 										<div class="form-group">
-											<label for="profileNewPasswordRepeat">旧密码</label> <input type="text" class="form-control"
-												id="profileNewPasswordRepeat"
-												placeholder="Retype New Password" />
+											<label class="col-md-3 control-label"
+												for="profileNewPasswordRepeat">确认密码</label>
+											<div class="col-md-9">
+												<input type="text" class="form-control"
+													id="profileNewPasswordRepeat" placeholder="确认密码" />
+											</div>
 										</div>
 									</fieldset>
 									<div class="bk-bg-white">
 										<div class="row">
 											<div class="col-md-12">
 												<div class="pull-right">
-													<button type="submit" class="btn btn-primary">保存</button>
+													<button type="button" class="btn btn-primary"
+														ng-click="edit_data()">保存</button>
 													<button type="reset" class="btn btn-default">重置</button>
 												</div>
 											</div>
@@ -336,8 +385,8 @@
 		</div>
 	</div>
 	<div class="col-lg-3 col-md-12">
-		
-		
+
+
 		<div class="panel panel-default">
 			<div class="panel-heading bk-bg-white">
 				<h6>

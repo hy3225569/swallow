@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import com.sea.swallow.model.ResultInfo;
 import com.sea.swallow.model.UserModel;
@@ -31,5 +32,5 @@ public interface IUserManage {
     * @param map
     * @return
     */
-   ResultInfo<UserModel> userLogin(Map<String,Object> map,HttpServletRequest request); 
+   ResultInfo<UserModel> userLogin(Map<String,Object> map,HttpServletRequest request,HttpServletResponse response); 
 }

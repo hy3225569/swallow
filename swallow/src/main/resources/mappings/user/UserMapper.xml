@@ -5,8 +5,7 @@
 	select t.user_id userId,t.user_name userName,t.role_id roleId,
 	t.create_time createTime,t.be_deleted beDeleted ,
 	t.self_description selfDescription,t.nick_name nickName,t.address,date_format(t.born_date,'%Y-%m-%d %h:%i:%s')
-	bornDate,t.head_img headImg,t.hobby,CASE t.sex WHEN 1 THEN '男'
-	WHEN 2 THEN '女' ELSE '男' END sex,t.user_pass userPass,t.phone
+	bornDate,t.head_img headImg,t.hobby,t.sex,t.user_pass userPass,t.phone
 	from tb_user t
      <where>
      1=1
