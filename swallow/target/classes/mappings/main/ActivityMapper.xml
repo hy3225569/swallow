@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sea.swallow.dal.ActivityMapper">
+       <insert id="insertActivity" parameterType="com.sea.swallow.model.ActivityModel" useGeneratedKeys="true" keyProperty="actionId">
+           INSERT INTO  tb_activity (user_id,action_type,update_time) VALUES (#{userId},#{actionType},now())
+       </insert>
+</mapper>

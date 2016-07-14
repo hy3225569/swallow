@@ -8,11 +8,14 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sea.swallow.common.JsonUtils;
 import com.sea.swallow.common.StringUtils;
+import com.sea.swallow.dal.ActivityMapper;
 import com.sea.swallow.dal.ArticleMapper;
 import com.sea.swallow.ibll.IArticleManage;
+import com.sea.swallow.model.ActivityModel;
 import com.sea.swallow.model.ArticleModel;
 import com.sea.swallow.model.ResultInfo;
 import com.sea.swallow.model.UserModel;
@@ -22,14 +25,18 @@ public class ArticleManage implements IArticleManage {
 
 	@Resource(name = "articleMapper")
 	private ArticleMapper articleMapper;
-
+    
+	@Resource(name="activityMapper")
+	private ActivityMapper activityMapper;
 	/**
 	 * 写文章
 	 */
 	@Override
+	@Transactional(rollbackFor={Exception.class})
 	public ResultInfo<String> writeBlog(HttpServletRequest request) {
 		String data = request.getParameter("data");
 		ArticleModel model = new ArticleModel();
+		ActivityModel activityModel=new ActivityModel();
 		try {
 			
 			if (data != null) {
@@ -37,10 +44,13 @@ public class ArticleManage implements IArticleManage {
 				model.setOpenType((byte) 2);
 				model.setArticleType(1);
 				model.setUserId(0);
+				activityModel.setActionType((byte) 1);
 				if (request.getSession().getAttribute("user") != null) {
 					model.setUserId(((UserModel)request.getSession().getAttribute("user")).getUserId());
 				}
 				if (checkArticleForm(model)) {
+					activityMapper.insertActivity(activityModel);
+					model.setArticleId(activityModel.getActionId());
 					return articleMapper.insertArticle(model) > 0 ? new ResultInfo<String>(0, "发布成功", "")
 							: new ResultInfo<String>(-1, "发布失败", "");
 				}

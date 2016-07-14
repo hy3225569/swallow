@@ -15,7 +15,7 @@ define([], function()
                           'controller/main/activitycontroller'
                 ]
             },
-            '/article': {
+            '/article/:articleId': {
                 templateUrl: '/template/article.html',
                 dependencies: [
                           'controller/myspace/articlecontroller'

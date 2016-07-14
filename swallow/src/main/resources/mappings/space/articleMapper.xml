@@ -2,12 +2,26 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.sea.swallow.dal.ArticleMapper">
       <select id="selectArticleList" parameterType="map" resultType="com.sea.swallow.model.ArticleModel">
-            select t.article_id articleId, t.title,t.discreption,t.release_time releaseTime,t.content,t.article_type articleType,
-            CASE t.article_type  WHEN 2 THEN "历史" ELSE "其他" END articleTypeName
-             from tb_article t where t.status=2
+		select t.article_id articleId, t.title,t.discreption,t.release_time
+		releaseTime,t.content,t.article_type articleType,
+		CASE t.article_type WHEN 2 THEN "历史" ELSE "其他" END
+		articleTypeName,t2.user_id userId,t.write_time writeTime
+		from tb_article t
+		LEFT JOIN tb_activity t2 ON t.article_id=t2.action_id
+		where t.status=2
+		<if test="userId!=null">
+		     and t2.user_id=#{userId}
+		</if>
+		<if test="articleId!=null">
+		     and t.article_id=#{articleId}
+		</if>
       </select>
        <insert id="insertArticle" parameterType="com.sea.swallow.model.ArticleModel">
-          insert into tb_article (user_id,article_type,write_time,title,status,content,discreption,open_type)
-          values (#{userId},#{articleType},now(),#{title},2,#{content},#{discreption},#{openType})
+          insert into tb_article (article_id,article_type,write_time,title,status,content,discreption,open_type)
+          values (#{articleId},#{articleType},now(),#{title},2,#{content},#{discreption},#{openType})
+       </insert>
+       
+       <insert id="insertActivity" parameterType="com.sea.swallow.model.ActivityModel" useGeneratedKeys="true" keyProperty="actionId">
+           INSERT INTO  tb_activity (user_id,action_type,update_time) VALUES (#{userId},#{actionType},now())
        </insert>
 </mapper>

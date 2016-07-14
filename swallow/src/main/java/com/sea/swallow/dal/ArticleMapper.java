@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.inject.Named;
 
+import com.sea.swallow.model.ActivityModel;
 import com.sea.swallow.model.ArticleModel;
 
 @Named("articleMapper")
