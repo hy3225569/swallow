@@ -15,7 +15,7 @@ define([], function()
                           'controller/main/activitycontroller'
                 ]
             },
-            '/article': {
+            '/article/:articleId': {
                 templateUrl: '/template/article.html',
                 dependencies: [
                           'controller/myspace/articlecontroller'
@@ -31,6 +31,12 @@ define([], function()
                 templateUrl: '/template/writeblog.html',
                 dependencies: [
                        'controller/myspace/articlecontroller'
+                ]
+            },
+            '/mymainpage': {
+                templateUrl: '/template/mymainpage.html',
+                dependencies: [
+                       'controller/main/maincontroller'
                 ]
             }
         }

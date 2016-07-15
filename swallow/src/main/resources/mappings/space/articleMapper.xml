@@ -24,4 +24,16 @@
        <insert id="insertActivity" parameterType="com.sea.swallow.model.ActivityModel" useGeneratedKeys="true" keyProperty="actionId">
            INSERT INTO  tb_activity (user_id,action_type,update_time) VALUES (#{userId},#{actionType},now())
        </insert>
+       
+       <select id="selectFriendArticleList" parameterType="map" resultType="com.sea.swallow.model.FriendArticleModel">
+           select t.article_id articleId, t.title,t.release_time
+		releaseTime,t.content,t.article_type articleType,
+		CASE t.article_type WHEN 2 THEN "历史" ELSE "其他" END
+		articleTypeName,t2.user_id userId,t3.nick_name friendNickName
+		from tb_article t
+		LEFT JOIN tb_activity t2 ON t.article_id=t2.action_id
+         LEFT JOIN tb_user t3 on t3.user_id=t2.user_id
+		where t.status=2
+         and t2.user_id in (SELECT friend_id user_id from tb_user_relation where user_id=#{userId})
+       </select>
 </mapper>

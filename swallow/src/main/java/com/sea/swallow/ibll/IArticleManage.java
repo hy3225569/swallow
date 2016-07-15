@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.sea.swallow.model.ArticleModel;
+import com.sea.swallow.model.FriendArticleModel;
 import com.sea.swallow.model.ResultInfo;
 
 public interface IArticleManage {
@@ -21,4 +22,11 @@ public interface IArticleManage {
 	 * @return
 	 */
 	ResultInfo<List<ArticleModel>> getArticleListByParames(Map<String,Object> map);
+	
+	/**
+	 * 获取好友博文列表
+	 * @param map
+	 * @return
+	 */
+	ResultInfo<List<FriendArticleModel>> getFriendArticleList(Map<String,Object> map);
 }

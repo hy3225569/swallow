@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.sea.swallow.dal.UserMapper">
-    <select id="selectUserInfo" resultType="com.sea.swallow.model.UserModel">
-        select user_id userId,user_name userName,role_id roleId, create_time createTime,be_deleted beDeleted from tb_user
+    <select id="selectUserInfo" resultType="com.sea.swallow.model.UserModel" parameterType="map">
+	select t.user_id userId,t.user_name userName,t.role_id roleId,
+	t.create_time createTime,t.be_deleted beDeleted ,
+	t.self_description selfDescription,t.nick_name nickName,t.address,date_format(t.born_date,'%Y-%m-%d %h:%i:%s')
+	bornDate,t.head_img headImg,t.hobby,t.sex,t.user_pass userPass,t.phone
+	from tb_user t
+     <where>
+     1=1
+     <if test="userId!=null">
+       and t.user_id=#{userId}
+     </if>
+     </where>
     </select>
     <!-- 插入用户基本信息 -->
     <insert id="insertUser" parameterType="com.sea.swallow.model.UserModel">

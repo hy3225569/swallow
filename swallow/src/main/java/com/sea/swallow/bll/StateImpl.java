@@ -1,5 +1,6 @@
 package com.sea.swallow.bll;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -11,10 +12,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.sea.swallow.common.JsonUtils;
 import com.sea.swallow.dal.ActivityMapper;
+import com.sea.swallow.dal.CommentMapper;
 import com.sea.swallow.dal.StateMapper;
 import com.sea.swallow.ibll.IStateService;
 import com.sea.swallow.model.ActivityModel;
 import com.sea.swallow.model.ArticleModel;
+import com.sea.swallow.model.CommentModel;
+import com.sea.swallow.model.FriendStateModel;
 import com.sea.swallow.model.ResultInfo;
 import com.sea.swallow.model.StateModel;
 import com.sea.swallow.model.UserModel;
@@ -26,6 +30,9 @@ public class StateImpl implements IStateService {
     
 	@Resource(name="activityMapper")
 	private ActivityMapper activityMapper;
+	
+	@Resource(name="commentMapper")
+	private CommentMapper commentMapper;
 	/**
 	 * 查询动态
 	 */
@@ -70,6 +77,25 @@ public class StateImpl implements IStateService {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new ResultInfo<String>(-1, "服务器有异常!", "");
+		}
+	}
+
+	/**
+	 * 查询好友说说
+	 */
+	@Override
+	public ResultInfo<List<FriendStateModel>> getFriendStatusList(Map<String, Object> map) {
+		try {
+			List<FriendStateModel> list=new ArrayList<>();
+			list=stateMapper.selectFriendStateList(map);
+			for (FriendStateModel friendStateModel : list) {
+				List<CommentModel> commentlist=commentMapper.selectCommentList(friendStateModel.getStateId());
+				friendStateModel.setComment(commentlist);
+			}
+			return new ResultInfo<List<FriendStateModel>>(0,"",list);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
 		}
 	}
 	

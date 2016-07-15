@@ -3,9 +3,8 @@
 <div class="page-header">
 	<div class="pull-left">
 		<ol class="breadcrumb visible-sm visible-md visible-lg">
-			<li><a href="index.html"><i class="icon fa fa-home"></i>Home</a></li>
-			<li><a href="#"><i class="fa fa-file-text"></i>Pages</a></li>
-			<li class="active"><i class="fa fa-car"></i>Activity</li>
+			<li><a href="index.html"><i class="icon fa fa-home"></i>主页</a></li>
+			<li class="active"><i class="fa fa-car"></i>所有动态</li>
 		</ol>
 	</div>
 	<div class="pull-right">
@@ -13,858 +12,404 @@
 	</div>
 </div>
 <!-- End Page Header -->
-<div class="row">
-	<div class="col-md-6">
+<div class="row" ng-controller="activitycontroller">
+	<div class="col-lg-12">
 		<div class="panel bk-bg-white">
+			<div class="panel-heading bk-bg-primary">
+				<h6>
+					<i class="fa fa-tags red"></i>Wizard with validation
+				</h6>
+				<div class="panel-actions">
+					<a href="form-wizard.html#" class="btn-setting"><i
+						class="fa fa-rotate-right"></i></a> <a href="form-wizard.html#"
+						class="btn-minimize"><i class="fa fa-chevron-up"></i></a> <a
+						href="form-wizard.html#" class="btn-close"><i
+						class="fa fa-times"></i></a>
+				</div>
+			</div>
 			<div class="panel-body">
-				<div class="bk-bg-white bk-margin-15">
-					<form role="form" action="javascript:">
-						<textarea type="email" class="form-control bk-noradius"
-							placeholder="What's on your mind?"></textarea>
-					</form>
-				</div>
-				<div class="bk-bg-white bk-margin-15">
-					<div class="btn-group">
-						<button type="button" class="btn btn-link">
-							<i class="fa fa-map-marker"></i>
-						</button>
-						<button type="button" class="btn btn-link">
-							<i class="fa fa-camera"></i>
-						</button>
-						<button type="button" class="btn btn-link">
-							<i class="fa fa-video-camera"></i>
-						</button>
+				<div id="wizard2" class="wizard-type2">
+					<ul class="steps">
+						<li><a href="form-wizard.html#tab21" data-toggle="tab"><span
+								class="badge badge-info"><i class="fa fa-star"></i></span> 状态</a></li>
+						<li><a href="form-wizard.html#tab22" data-toggle="tab"><span
+								class="badge badge-info"><i class="fa fa-credit-card"></i></span>
+								博文</a></li>
+						<li><a href="form-wizard.html#tab23" data-toggle="tab"><span
+								class="badge badge-info"><i class="fa fa-building"></i></span>
+								计划</a></li>
+						<li><a href="form-wizard.html#tab24" data-toggle="tab"><span
+								class="badge badge-info"><i class="fa fa-check"></i></span>
+								消息</a></li>
+					</ul>
+					<div class="progress thin progress-striped active">
+						<div class="progress-bar progress-bar-info" role="progressbar"
+							aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+							style="width: 0%;"></div>
 					</div>
-					<div class="pull-right">
-						<button type="button" class="btn btn-primary">
-							<i class="fa fa-lightbulb-o"></i> Post
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
+					<div class="tab-content">
+						<div class="tab-pane" id="tab21">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="panel bk-bg-white">
+										<div class="panel-body">
+											<div class="bk-bg-white bk-margin-15">
+												<form role="form">
+													<textarea type="text" ng-model="status.content" class="form-control bk-noradius"
+														placeholder=" 现在在想什么?"></textarea>
+												</form>
+											</div>
+											<div class="bk-bg-white bk-margin-15">
+												<div class="pull-right">
+													<button ng-click="updateStatus()" type="button" class="btn btn-primary">
+														<i class="fa fa-lightbulb-o"></i> 发表
+													</button>
+												</div>
+											</div>
+										</div>
+									</div>
 
-		<div class="panel bk-widget bk-border-off">
-			<div
-				class="panel-body text-left bk-bg-white bk-padding-top-15 bk-padding-bottom-15">
-				<div class="row">
-					<div class="col-xs-4">
-						<div class="bk-avatar">
-							<img src="/assets/img/avatar.jpg" alt=""
-								class="img-circle bk-img-60 bk-border-info bk-border-3x" />
-						</div>
-					</div>
-					<div class="col-xs-8 text-right">
-						<h4 class="bk-margin-off bk-fg-primary">Robert Diego</h4>
-						<small>CHIEF EXECUTIVE OFFICER</small>
-						<div>
-							<div class="btn-group">
-								<a href="#" class="btn btn-info btn-xs">profile</a> <a href="#"
-									class="btn btn-info btn-xs">contact</a>
+									<div class="panel bk-widget bk-border-off" ng-repeat="state in friendStatelist">
+										<div
+											class="panel-body text-left bk-bg-white bk-padding-top-15 bk-padding-bottom-15">
+											<div class="row">
+												<div class="col-xs-4">
+													<div class="bk-avatar">
+														<img src="/assets/img/avatar.jpg" alt=""
+															class="img-circle bk-img-60 bk-border-info bk-border-3x" />
+													</div>
+												</div>
+												<div class="col-xs-8 text-right">
+													<h4 class="bk-margin-off bk-fg-primary">{{state.friendNickName}}</h4>
+													<small>CHIEF EXECUTIVE OFFICER</small>
+													<div>
+														<div class="btn-group">
+															<a href="#" class="btn btn-info btn-xs">profile</a> <a
+																href="#" class="btn btn-info btn-xs">contact</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="panel-body bk-bg-white">
+												<h3>{{state.content}}</h3>
+										
+											<div class="actions">
+												<div class="pull-right bk-fg-primary">
+													<strong>{{state.releaseTime}}</strong>
+												</div>
+											</div>
+										</div>
+										<hr class="bk-margin-off" />
+										<div class="bk-docs-scroll-hidden">
+											<div class="panel-body bk-bg-white">
+												<div class="media" ng-repeat="commentState in state.comment">
+													<a class="pull-left bk-avatar" href="page-activity.html#">
+														<img src="/assets/img/avatar7.jpg" alt=""
+														class="img-circle bk-img-40 bk-border-info bk-border-1x" />
+													</a>
+													<div class="media-body">
+														<div class="pull-right small">{{commentState.conmmentTime}}</div>
+														<a href="#">
+															<div class="media-heading bk-fg-primary">
+																<strong>{{commentState.userId}}</strong>
+															</div>
+														</a>
+														<h4>{{commentState.commentContent}}</h4>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div
+											class="panel-body bk-bg-white bk-padding-top-15 bk-padding-bottom-15">
+											<form role="form" action="javascript:">
+												<div class="input-group">
+													<input type="text" ng-model="state.stateComment" class="form-control bk-noradius" /> <span
+														class="input-group-btn">
+														<button class="btn btn-default bk-noradius" ng-click="writeStateComment(state)" type="button">
+															<i class="fa fa-send-o"></i>
+														</button>
+													</span>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
-					</div>
-				</div>
-			</div>
-			<div class="panel-body bk-bg-white">
-				<blockquote>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-						Mollitia, suscipit, autem sit natus deserunt officia error odit ea
-						minima soluta ratione maxime molestias fugit explicabo aspernatur
-						praesentium quisquam voluptatum fuga. Ut wisi enim ad minim
-						veniam, quis nostrud exerci tation ullamcorper suscipit lobortis
-						nisl ut aliquip ex ea commodo consequat.</p>
-				</blockquote>
-				<div class="actions">
-					<div class="btn-group">
-						<button type="button" class="btn btn-link">
-							<small>Like</small>
-						</button>
-						<button type="button" class="btn btn-link">
-							<small>Comment</small>
-						</button>
-						<button type="button" class="btn btn-link">
-							<small>Share</small>
-						</button>
-					</div>
-					<div class="pull-right bk-fg-primary">
-						<strong>2.596</strong> People liked this
-					</div>
-				</div>
-			</div>
-			<hr class="bk-margin-off" />
-			<div class="bk-docs-scroll-hidden">
-				<div class="panel-body bk-bg-white">
-					<div class="media">
-						<a class="pull-left bk-avatar" href="page-activity.html#"> <img
-							src="/assets/img/avatar7.jpg" alt=""
-							class="img-circle bk-img-40 bk-border-info bk-border-1x" />
-						</a>
-						<div class="media-body">
-							<div class="pull-right small">30 minutes ago</div>
-							<a href="page-activity.html#">
-								<div class="media-heading bk-fg-primary">
-									<strong>Sharon Rose</strong>
+						<div class="tab-pane" id="tab22">
+						    <div class="row"> 
+								<div class="panel bk-widget bk-border-off" ng-repeat="article in friendArticlelist">
+										<div
+											class="panel-body text-left bk-bg-white bk-padding-top-15 bk-padding-bottom-15">
+											<div class="row">
+												<div class="col-xs-4">
+													<div class="bk-avatar">
+														<img src="/assets/img/avatar.jpg" alt=""
+															class="img-circle bk-img-60 bk-border-info bk-border-3x" />
+													</div>
+												</div>
+												<div class="col-xs-8 text-right">
+													<h4 class="bk-margin-off bk-fg-primary">{{article.friendNickName}}</h4>
+													<small>CHIEF EXECUTIVE OFFICER</small>
+													<div>
+														<div class="btn-group">
+															<a href="#" class="btn btn-info btn-xs">profile</a> <a
+																href="#" class="btn btn-info btn-xs">contact</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="panel-body bk-bg-white">
+												<h3>{{article.content}}</h3>
+										
+											<div class="actions">
+												<div class="pull-right bk-fg-primary">
+													<strong>{{article.releaseTime}}</strong>
+												</div>
+											</div>
+										</div>
+										<hr class="bk-margin-off" />
+										<div class="bk-docs-scroll-hidden">
+											<div class="panel-body bk-bg-white">
+												<div class="media" ng-repeat="articleComment in article.comment">
+													<a class="pull-left bk-avatar" href="#">
+														<img src="/assets/img/avatar7.jpg" alt=""
+														class="img-circle bk-img-40 bk-border-info bk-border-1x" />
+													</a>
+													<div class="media-body">
+														<div class="pull-right small">{{article.commentTime}}</div>
+														<a href="page-activity.html#">
+															<div class="media-heading bk-fg-primary">
+																<strong>{{articleComment.nickName}}</strong>
+															</div>
+														</a>
+														<p>{{articleComment.commentContent}}</p>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div
+											class="panel-body bk-bg-white bk-padding-top-15 bk-padding-bottom-15">
+											<form role="form" action="javascript:">
+												<div class="input-group">
+													<input type="text" ng-model="article.articleComment" class="form-control bk-noradius" /> <span
+														class="input-group-btn">
+														<button class="btn btn-default bk-noradius" ng-click="writeArticleComment(article)" type="button">
+															<i class="fa fa-send-o"></i>
+														</button>
+													</span>
+												</div>
+											</form>
+										</div>
+									</div>
+									<div class="panel bk-widget bk-border-off">
+										<div
+											class="panel-body text-left bk-bg-white bk-padding-top-15 bk-padding-bottom-15">
+											<div class="row">
+												<div class="col-xs-4">
+													<div class="bk-avatar">
+														<img src="/assets/img/avatar.jpg" alt=""
+															class="img-circle bk-img-60 bk-border-info bk-border-3x" />
+													</div>
+												</div>
+												<div class="col-xs-8 text-right">
+													<h4 class="bk-margin-off bk-fg-primary">Robert Diego</h4>
+													<small>CHIEF EXECUTIVE OFFICER</small>
+													<div>
+														<div class="btn-group">
+															<a href="javascript:" class="btn btn-info btn-xs">profile</a>
+															<a href="javascript:" class="btn btn-info btn-xs">contact</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<a
+											class="panel-body bk-bg-white bk-ltr bk-opacity bk-padding-top-15">
+											<div class="row">
+												<div class="col-lg-4 col-md-4 col-xs-4">
+													<img class="img-responsive"
+														src="/assets/img/gallery/photo1.jpg" alt="" />
+												</div>
+												<div class="col-lg-4 col-md-4 col-xs-4">
+													<img class="img-responsive"
+														src="/assets/img/gallery/photo2.jpg" alt="" />
+												</div>
+												<div class="col-lg-4 col-md-4 col-xs-4">
+													<img class="img-responsive"
+														src="/assets/img/gallery/photo3.jpg" alt="" />
+												</div>
+											</div>
+										</a>
+										<div class="panel-body bk-bg-white">
+											<div class="actions">
+												<div class="btn-group">
+													<button type="button" class="btn btn-link">
+														<small>Like</small>
+													</button>
+													<button type="button" class="btn btn-link">
+														<small>Comment</small>
+													</button>
+													<button type="button" class="btn btn-link">
+														<small>Share</small>
+													</button>
+												</div>
+												<div class="pull-right bk-fg-primary">
+													<strong>2.596</strong> People liked this
+												</div>
+											</div>
+										</div>
+										<hr class="bk-margin-off" />
+										<div class="bk-docs-scroll-hidden">
+											<div class="panel-body bk-bg-white">
+												<div class="media">
+													<a class="pull-left bk-avatar" href="page-activity.html#">
+														<img src="/assets/img/avatar7.jpg" alt=""
+														class="img-circle bk-img-40 bk-border-info bk-border-1x" />
+													</a>
+													<div class="media-body">
+														<div class="pull-right small">30 minutes ago</div>
+														<a href="page-activity.html#">
+															<div class="media-heading bk-fg-primary">
+																<strong>Sharon Rose</strong>
+															</div>
+														</a>
+														<p>Lorem ipsum dolor sit amet, consectetur adipisicing
+															elit. Mollitia, suscipit, autem sit natus deserunt
+															officia error odit ea minima soluta ratione maxime
+															molestias fugit explicabo aspernatur praesentium quisquam
+															voluptatum fuga.</p>
+														<a href="page-activity.html#">Like</a><small><strong>
+																2.596</strong> People liked this</small>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div
+											class="panel-body bk-bg-white bk-padding-top-15 bk-padding-bottom-15">
+											<form role="form" action="javascript:">
+												<div class="input-group">
+													<input type="text" class="form-control bk-noradius" /> <span
+														class="input-group-btn">
+														<button class="btn btn-default bk-noradius" type="button">
+															<i class="fa fa-send-o"></i>
+														</button>
+													</span>
+												</div>
+											</form>
+										</div>
+									</div>
 								</div>
-							</a>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-								Mollitia, suscipit, autem sit natus deserunt officia error odit
-								ea minima soluta ratione maxime molestias fugit explicabo
-								aspernatur praesentium quisquam voluptatum fuga.</p>
-							<a href="page-activity.html#">Like</a><small><strong>
-									2.596</strong> People liked this</small>
+							
 						</div>
-					</div>
-					<div class="media">
-						<a class="pull-left bk-avatar" href="page-activity.html#"> <img
-							src="/assets/img/avatar7.jpg" alt=""
-							class="img-circle bk-img-40 bk-border-info bk-border-1x" />
-						</a>
-						<div class="media-body">
-							<div class="pull-right small">30 minutes ago</div>
-							<a href="page-activity.html#">
-								<div class="media-heading bk-fg-primary">
-									<strong>Sharon Rose</strong>
+						<div class="tab-pane" id="tab23">
+							<div class="form-group">
+								<label for="company-w2">Company</label> <input type="text"
+									class="form-control" id="company-w2" placeholder="Company name" />
+							</div>
+							<div class="form-group">
+								<label for="vat-w2">VAT</label> <input type="text"
+									class="form-control" id="vat-w2" placeholder="040.0253.001" />
+							</div>
+							<div class="form-group">
+								<label for="street-w2">Street</label> <input type="text"
+									class="form-control" id="street-w2" placeholder="Street" />
+							</div>
+							<div class="row">
+								<div class="form-group col-sm-8">
+									<label for="city-w2">City</label> <input type="text"
+										class="form-control" id="city-w2" placeholder="City" />
 								</div>
-							</a>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-								Mollitia, suscipit, autem sit natus deserunt officia error odit
-								ea minima soluta ratione maxime molestias fugit explicabo
-								aspernatur praesentium quisquam voluptatum fuga.</p>
-							<a href="page-activity.html#">Like</a><small><strong>
-									2.596</strong> People liked this</small>
-						</div>
-					</div>
-					<div class="media">
-						<a class="pull-left bk-avatar" href="page-activity.html#"> <img
-							src="/assets/img/avatar7.jpg" alt=""
-							class="img-circle bk-img-40 bk-border-info bk-border-1x" />
-						</a>
-						<div class="media-body">
-							<div class="pull-right small">30 minutes ago</div>
-							<a href="page-activity.html#">
-								<div class="media-heading bk-fg-primary">
-									<strong>Sharon Rose</strong>
+								<div class="form-group col-sm-4">
+									<label for="postal-code-w2">Postal Code</label> <input
+										type="text" class="form-control" id="postal-code-w2"
+										placeholder="Postal Code" />
 								</div>
-							</a>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-								Mollitia, suscipit, autem sit natus deserunt officia error odit
-								ea minima soluta ratione maxime molestias fugit explicabo
-								aspernatur praesentium quisquam voluptatum fuga.</p>
-							<a href="page-activity.html#">Like</a><small><strong>
-									2.596</strong> People liked this</small>
-						</div>
-					</div>
-					<div class="media">
-						<a class="pull-left bk-avatar" href="page-activity.html#"> <img
-							src="/assets/img/avatar7.jpg" alt=""
-							class="img-circle bk-img-40 bk-border-info bk-border-1x" />
-						</a>
-						<div class="media-body">
-							<div class="pull-right small">30 minutes ago</div>
-							<a href="page-activity.html#">
-								<div class="media-heading bk-fg-primary">
-									<strong>Sharon Rose</strong>
-								</div>
-							</a>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-								Mollitia, suscipit, autem sit natus deserunt officia error odit
-								ea minima soluta ratione maxime molestias fugit explicabo
-								aspernatur praesentium quisquam voluptatum fuga.</p>
-							<a href="page-activity.html#">Like</a><small><strong>
-									2.596</strong> People liked this</small>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div
-				class="panel-body bk-bg-white bk-padding-top-15 bk-padding-bottom-15">
-				<form role="form" action="javascript:">
-					<div class="input-group">
-						<input type="text" class="form-control bk-noradius" /> <span
-							class="input-group-btn">
-							<button class="btn btn-default bk-noradius" type="button">
-								<i class="fa fa-send-o"></i>
-							</button>
-						</span>
-					</div>
-				</form>
-			</div>
-		</div>
-		<div class="panel bk-widget bk-border-off">
-			<div
-				class="panel-body text-left bk-bg-white bk-padding-top-15 bk-padding-bottom-15">
-				<div class="row">
-					<div class="col-xs-4">
-						<div class="bk-avatar">
-							<img src="/assets/img/avatar.jpg" alt=""
-								class="img-circle bk-img-60 bk-border-info bk-border-3x" />
-						</div>
-					</div>
-					<div class="col-xs-8 text-right">
-						<h4 class="bk-margin-off bk-fg-primary">Robert Diego</h4>
-						<small>CHIEF EXECUTIVE OFFICER</small>
-						<div>
-							<div class="btn-group">
-								<a href="javascript:" class="btn btn-info btn-xs">profile</a> <a
-									href="javascript:" class="btn btn-info btn-xs">contact</a>
+							</div>
+							<div class="form-group">
+								<label for="country-w2">Country</label> <input type="text"
+									class="form-control" id="country-w2" placeholder="Country" />
 							</div>
 						</div>
-					</div>
-				</div>
-			</div>
-			<a class="panel-body bk-bg-white bk-ltr bk-opacity bk-padding-top-15">
-				<div class="row">
-					<div class="col-lg-4 col-md-4 col-xs-4">
-						<img class="img-responsive" src="/assets/img/gallery/photo1.jpg"
-							alt="" />
-					</div>
-					<div class="col-lg-4 col-md-4 col-xs-4">
-						<img class="img-responsive" src="/assets/img/gallery/photo2.jpg"
-							alt="" />
-					</div>
-					<div class="col-lg-4 col-md-4 col-xs-4">
-						<img class="img-responsive" src="/assets/img/gallery/photo3.jpg"
-							alt="" />
-					</div>
-				</div>
-			</a>
-			<div class="panel-body bk-bg-white">
-				<div class="actions">
-					<div class="btn-group">
-						<button type="button" class="btn btn-link">
-							<small>Like</small>
-						</button>
-						<button type="button" class="btn btn-link">
-							<small>Comment</small>
-						</button>
-						<button type="button" class="btn btn-link">
-							<small>Share</small>
-						</button>
-					</div>
-					<div class="pull-right bk-fg-primary">
-						<strong>2.596</strong> People liked this
-					</div>
-				</div>
-			</div>
-			<hr class="bk-margin-off" />
-			<div class="bk-docs-scroll-hidden">
-				<div class="panel-body bk-bg-white">
-					<div class="media">
-						<a class="pull-left bk-avatar" href="page-activity.html#"> <img
-							src="/assets/img/avatar7.jpg" alt=""
-							class="img-circle bk-img-40 bk-border-info bk-border-1x" />
-						</a>
-						<div class="media-body">
-							<div class="pull-right small">30 minutes ago</div>
-							<a href="page-activity.html#">
-								<div class="media-heading bk-fg-primary">
-									<strong>Sharon Rose</strong>
-								</div>
-							</a>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-								Mollitia, suscipit, autem sit natus deserunt officia error odit
-								ea minima soluta ratione maxime molestias fugit explicabo
-								aspernatur praesentium quisquam voluptatum fuga.</p>
-							<a href="page-activity.html#">Like</a><small><strong>
-									2.596</strong> People liked this</small>
-						</div>
-					</div>
-					<div class="media">
-						<a class="pull-left bk-avatar" href="page-activity.html#"> <img
-							src="/assets/img/avatar7.jpg" alt=""
-							class="img-circle bk-img-40 bk-border-info bk-border-1x" />
-						</a>
-						<div class="media-body">
-							<div class="pull-right small">30 minutes ago</div>
-							<a href="page-activity.html#">
-								<div class="media-heading bk-fg-primary">
-									<strong>Sharon Rose</strong>
-								</div>
-							</a>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-								Mollitia, suscipit, autem sit natus deserunt officia error odit
-								ea minima soluta ratione maxime molestias fugit explicabo
-								aspernatur praesentium quisquam voluptatum fuga.</p>
-							<a href="page-activity.html#">Like</a><small><strong>
-									2.596</strong> People liked this</small>
-						</div>
-					</div>
-					<div class="media">
-						<a class="pull-left bk-avatar" href="page-activity.html#"> <img
-							src="/assets/img/avatar7.jpg" alt=""
-							class="img-circle bk-img-40 bk-border-info bk-border-1x" />
-						</a>
-						<div class="media-body">
-							<div class="pull-right small">30 minutes ago</div>
-							<a href="page-activity.html#">
-								<div class="media-heading bk-fg-primary">
-									<strong>Sharon Rose</strong>
-								</div>
-							</a>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-								Mollitia, suscipit, autem sit natus deserunt officia error odit
-								ea minima soluta ratione maxime molestias fugit explicabo
-								aspernatur praesentium quisquam voluptatum fuga.</p>
-							<a href="page-activity.html#">Like</a><small><strong>
-									2.596</strong> People liked this</small>
-						</div>
-					</div>
-					<div class="media">
-						<a class="pull-left bk-avatar" href="page-activity.html#"> <img
-							src="/assets/img/avatar7.jpg" alt=""
-							class="img-circle bk-img-40 bk-border-info bk-border-1x" />
-						</a>
-						<div class="media-body">
-							<div class="pull-right small">30 minutes ago</div>
-							<a href="page-activity.html#">
-								<div class="media-heading bk-fg-primary">
-									<strong>Sharon Rose</strong>
-								</div>
-							</a>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-								Mollitia, suscipit, autem sit natus deserunt officia error odit
-								ea minima soluta ratione maxime molestias fugit explicabo
-								aspernatur praesentium quisquam voluptatum fuga.</p>
-							<a href="page-activity.html#">Like</a><small><strong>
-									2.596</strong> People liked this</small>
-						</div>
-					</div>
-					<div class="media">
-						<a class="pull-left bk-avatar" href="page-activity.html#"> <img
-							src="/assets/img/avatar7.jpg" alt=""
-							class="img-circle bk-img-40 bk-border-info bk-border-1x" />
-						</a>
-						<div class="media-body">
-							<div class="pull-right small">30 minutes ago</div>
-							<a href="page-activity.html#">
-								<div class="media-heading bk-fg-primary">
-									<strong>Sharon Rose</strong>
-								</div>
-							</a>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-								Mollitia, suscipit, autem sit natus deserunt officia error odit
-								ea minima soluta ratione maxime molestias fugit explicabo
-								aspernatur praesentium quisquam voluptatum fuga.</p>
-							<a href="page-activity.html#">Like</a><small><strong>
-									2.596</strong> People liked this</small>
-						</div>
-					</div>
-					<div class="media">
-						<a class="pull-left bk-avatar" href="page-activity.html#"> <img
-							src="/assets/img/avatar7.jpg" alt=""
-							class="img-circle bk-img-40 bk-border-info bk-border-1x" />
-						</a>
-						<div class="media-body">
-							<div class="pull-right small">30 minutes ago</div>
-							<a href="page-activity.html#">
-								<div class="media-heading bk-fg-primary">
-									<strong>Sharon Rose</strong>
-								</div>
-							</a>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-								Mollitia, suscipit, autem sit natus deserunt officia error odit
-								ea minima soluta ratione maxime molestias fugit explicabo
-								aspernatur praesentium quisquam voluptatum fuga.</p>
-							<a href="page-activity.html#">Like</a><small><strong>
-									2.596</strong> People liked this</small>
-						</div>
-					</div>
-					<div class="media">
-						<a class="pull-left bk-avatar" href="page-activity.html#"> <img
-							src="/assets/img/avatar7.jpg" alt=""
-							class="img-circle bk-img-40 bk-border-info bk-border-1x" />
-						</a>
-						<div class="media-body">
-							<div class="pull-right small">30 minutes ago</div>
-							<a href="page-activity.html#">
-								<div class="media-heading bk-fg-primary">
-									<strong>Sharon Rose</strong>
-								</div>
-							</a>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-								Mollitia, suscipit, autem sit natus deserunt officia error odit
-								ea minima soluta ratione maxime molestias fugit explicabo
-								aspernatur praesentium quisquam voluptatum fuga.</p>
-							<a href="page-activity.html#">Like</a><small><strong>
-									2.596</strong> People liked this</small>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div
-				class="panel-body bk-bg-white bk-padding-top-15 bk-padding-bottom-15">
-				<form role="form" action="javascript:">
-					<div class="input-group">
-						<input type="text" class="form-control bk-noradius" /> <span
-							class="input-group-btn">
-							<button class="btn btn-default bk-noradius" type="button">
-								<i class="fa fa-send-o"></i>
-							</button>
-						</span>
-					</div>
-				</form>
-			</div>
-		</div>
-		<div class="panel bk-widget bk-border-off">
-			<div class="panel-body bk-ltr">
-				<div class="row text-center">
-					<a
-						class="col-xs-12 bk-bg-primary bk-bg-darken bk-padding-top-10 bk-padding-bottom-10">
-						<h6>VIEW MORE POST</h6>
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
+						<div class="tab-pane" id="tab24">
+							<h4>
+								<strong>1. General Terms</strong>
+							</h4>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+								sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+								aliquam erat volutpat. sed diam nonummy nibh euismod tincidunt
+								ut laoreet dolore magna aliquam erat volutpat.</p>
+							<hr />
+							<h4>
+								<strong>2. Products</strong>
+							</h4>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+								sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+								aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
+								nostrud exerci tation ullamcorper suscipit lobortis nisl ut
+								aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor
+								in hendrerit in vulputate velit esse molestie consequat, vel
+								illum dolore eu feugiat nulla facilisis at vero eros et accumsan
+								et iusto odio dignissim qui blandit praesent luptatum zzril
+								delenit.</p>
+							<hr />
+							<h4>
+								<strong>3. Security</strong>
+							</h4>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+								sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+								aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
+								nostrud exerci tation ullamcorper suscipit lobortis nisl ut
+								aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor
+								in hendrerit in vulputate velit esse molestie consequat, vel
+								illum dolore eu feugiat nulla facilisis at vero eros et accumsan
+								et iusto odio dignissim qui blandit praesent luptatum zzril
+								delenit.</p>
+							<hr />
+							<h4>
+								<strong>4. Refunds</strong>
+							</h4>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+								sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+								aliquam erat volutpat. sed diam nonummy nibh euismod tincidunt
+								ut laoreet dolore magna aliquam erat volutpat.</p>
+							<hr />
+							<h4>
+								<strong>5. Ownership</strong>
+							</h4>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+								sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+								aliquam erat volutpat. sed diam nonummy nibh euismod tincidunt
+								ut laoreet dolore magna aliquam erat volutpat.</p>
+							<hr />
+							<h4>
+								<strong>Changes to terms</strong>
+							</h4>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+								sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+								aliquam erat volutpat. sed diam nonummy nibh euismod tincidunt
+								ut laoreet dolore magna aliquam erat volutpat.</p>
+							<hr />
 
-	<div class="col-md-6">
-		<div class="panel bk-widget bk-border-off bk-noradius">
-			<div
-				class="panel-body bk-bg-white text-center bk-padding-top-10 bk-padding-bottom-10">
-				<div class="row">
-					<div class="col-xs-8 text-left bk-vcenter">
-						<h6 class="bk-margin-off">LIVE CHAT</h6>
-					</div>
-					<div class="col-xs-4 bk-vcenter text-right">
-						<i class="fa fa-comments-o"></i>
-					</div>
-				</div>
-			</div>
-			<hr class="bk-margin-off" />
-			<div class="bk-docs-scroll-hidden">
-				<a
-					class="panel-body bk-bg-very-light-gray bk-bg-lighten bk-padding-off-top bk-padding-off-bottom">
-					<div class="pull-left bk-margin-top-10 bk-margin-right-10">
-						<div class="bk-avatar">
-							<img src="/assets/img/avatar1.jpg" alt=""
-								class="img-circle bk-img-60 bk-border-off" />
+							<div class="form-group">
+								<div
+									class="checkbox-custom checkbox-default bk-margin-bottom-10">
+									<input id="checkbox-w2" name="checkbox-w2" type="checkbox" />
+									<label for="checkbox-w2"> I agree with <a
+										href="form-wizard.html#">Terms of Service</a></label>
+								</div>
+							</div>
 						</div>
-					</div>
-					<div class="bk-fg-inverse bk-margin-top-10">
-						<strong class="bk-fg-primary"><div
-								class="point point-success point-lg"></div>John Doe</strong> <span
-							class="pull-right"><i class="fa fa-clock-o"></i><small>
-								just now</small></span>
-					</div>
-					<p>Cum sociis natoque pen ibus Mauris pede arcuats moles tied
-						Aliquam or Mauris pede arcuats</p>
-				</a>
-				<hr class="bk-margin-off" />
-				<a
-					class="panel-body bk-bg-very-light-gray bk-bg-lighten bk-padding-off-top bk-padding-off-bottom">
-					<div class="pull-right bk-margin-top-10 bk-margin-left-10">
-						<div class="bk-avatar">
-							<img src="/assets/img/avatar.jpg" alt=""
-								class="img-circle bk-img-60 bk-border-off" />
+						<div class="actions">
+							<input type="button" class="btn btn-info button-previous"
+								name="previous" value="Previous" /> <input type="button"
+								class="btn btn-primary button-next pull-right" name="next"
+								value="Next" /> <input type="button"
+								class="btn btn-success button-finish pull-right" name="finish"
+								value="Finish" style="display: none" />
 						</div>
-					</div>
-					<div class="bk-fg-inverse bk-margin-top-10">
-						<strong class="pull-right bk-fg-primary"><div
-								class="point point-success point-lg"></div>Robert</strong> <span><i
-							class="fa fa-clock-o"></i><small> 3' ago</small></span>
-					</div>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-						eget turpis pulvinar, tempor odio sed, adipiscing dolor.</p>
-				</a>
-				<hr class="bk-margin-off" />
-				<a
-					class="panel-body bk-bg-very-light-gray bk-bg-lighten bk-padding-off-top bk-padding-off-bottom">
-					<div class="pull-left bk-margin-top-10 bk-margin-right-10">
-						<div class="bk-avatar">
-							<img src="/assets/img/avatar1.jpg" alt=""
-								class="img-circle bk-img-60 bk-border-off" />
-						</div>
-					</div>
-					<div class="bk-fg-inverse bk-margin-top-10">
-						<strong class="bk-fg-primary"><div
-								class="point point-success point-lg"></div>John Doe</strong> <span
-							class="pull-right"><i class="fa fa-clock-o"></i><small>
-								6' ago</small></span>
-					</div>
-					<p>Cum sociis natoque pen ibus Mauris pede arcuats moles tied
-						Aliquam or Mauris pede arcuats</p>
-				</a>
-				<hr class="bk-margin-off" />
-				<a
-					class="panel-body bk-bg-very-light-gray bk-bg-lighten bk-padding-off-top bk-padding-off-bottom">
-					<div class="pull-right bk-margin-top-10 bk-margin-left-10">
-						<div class="bk-avatar">
-							<img src="/assets/img/avatar.jpg" alt=""
-								class="img-circle bk-img-60 bk-border-off" />
-						</div>
-					</div>
-					<div class="bk-fg-inverse bk-margin-top-10">
-						<strong class="pull-right bk-fg-primary"><div
-								class="point point-success point-lg"></div>Robert</strong> <span><i
-							class="fa fa-clock-o"></i><small> 11' ago</small></span>
-					</div>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-						eget turpis pulvinar, tempor odio sed, adipiscing dolor.</p>
-				</a>
-				<hr class="bk-margin-off" />
-				<a
-					class="panel-body bk-bg-very-light-gray bk-bg-lighten bk-padding-off-top bk-padding-off-bottom">
-					<div class="pull-left bk-margin-top-10 bk-margin-right-10">
-						<div class="bk-avatar">
-							<img src="/assets/img/avatar1.jpg" alt=""
-								class="img-circle bk-img-60 bk-border-off" />
-						</div>
-					</div>
-					<div class="bk-fg-inverse bk-margin-top-10">
-						<strong class="bk-fg-primary"><div
-								class="point point-success point-lg"></div>John Doe</strong> <span
-							class="pull-right"><i class="fa fa-clock-o"></i><small>
-								6' ago</small></span>
-					</div>
-					<p>Cum sociis natoque pen ibus Mauris pede arcuats moles tied
-						Aliquam or Mauris pede arcuats</p>
-				</a>
-				<hr class="bk-margin-off" />
-				<a
-					class="panel-body bk-bg-very-light-gray bk-bg-lighten bk-padding-off-top bk-padding-off-bottom">
-					<div class="pull-right bk-margin-top-10 bk-margin-left-10">
-						<div class="bk-avatar">
-							<img src="/assets/img/avatar.jpg" alt=""
-								class="img-circle bk-img-60 bk-border-off" />
-						</div>
-					</div>
-					<div class="bk-fg-inverse bk-margin-top-10">
-						<strong class="pull-right bk-fg-primary"><div
-								class="point point-success point-lg"></div>Robert</strong> <span><i
-							class="fa fa-clock-o"></i><small> 11' ago</small></span>
-					</div>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-						eget turpis pulvinar, tempor odio sed, adipiscing dolor.</p>
-				</a>
-				<hr class="bk-margin-off" />
-				<a
-					class="panel-body bk-bg-very-light-gray bk-bg-lighten bk-padding-off-top bk-padding-off-bottom">
-					<div class="pull-left bk-margin-top-10 bk-margin-right-10">
-						<div class="bk-avatar">
-							<img src="/assets/img/avatar1.jpg" alt=""
-								class="img-circle bk-img-60 bk-border-off" />
-						</div>
-					</div>
-					<div class="bk-fg-inverse bk-margin-top-10">
-						<strong class="bk-fg-primary"><div
-								class="point point-success point-lg"></div>John Doe</strong> <span
-							class="pull-right"><i class="fa fa-clock-o"></i><small>
-								6' ago</small></span>
-					</div>
-					<p>Cum sociis natoque pen ibus Mauris pede arcuats moles tied
-						Aliquam or Mauris pede arcuats</p>
-				</a>
-				<hr class="bk-margin-off" />
-				<a
-					class="panel-body bk-bg-very-light-gray bk-bg-lighten bk-padding-off-top bk-padding-off-bottom">
-					<div class="pull-right bk-margin-top-10 bk-margin-left-10">
-						<div class="bk-avatar">
-							<img src="/assets/img/avatar.jpg" alt=""
-								class="img-circle bk-img-60 bk-border-off" />
-						</div>
-					</div>
-					<div class="bk-fg-inverse bk-margin-top-10">
-						<strong class="pull-right bk-fg-primary"><div
-								class="point point-success point-lg"></div>Robert</strong> <span><i
-							class="fa fa-clock-o"></i><small> 11' ago</small></span>
-					</div>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-						eget turpis pulvinar, tempor odio sed, adipiscing dolor.</p>
-				</a>
-				<hr class="bk-margin-off" />
-				<a
-					class="panel-body bk-bg-very-light-gray bk-bg-lighten bk-padding-off-top bk-padding-off-bottom">
-					<div class="pull-left bk-margin-top-10 bk-margin-right-10">
-						<div class="bk-avatar">
-							<img src="/assets/img/avatar1.jpg" alt=""
-								class="img-circle bk-img-60 bk-border-off" />
-						</div>
-					</div>
-					<div class="bk-fg-inverse bk-margin-top-10">
-						<strong class="bk-fg-primary"><div
-								class="point point-success point-lg"></div>John Doe</strong> <span
-							class="pull-right"><i class="fa fa-clock-o"></i><small>
-								6' ago</small></span>
-					</div>
-					<p>Cum sociis natoque pen ibus Mauris pede arcuats moles tied
-						Aliquam or Mauris pede arcuats</p>
-				</a>
-				<hr class="bk-margin-off" />
-				<a
-					class="panel-body bk-bg-very-light-gray bk-bg-lighten bk-padding-off-top bk-padding-off-bottom">
-					<div class="pull-right bk-margin-top-10 bk-margin-left-10">
-						<div class="bk-avatar">
-							<img src="/assets/img/avatar.jpg" alt=""
-								class="img-circle bk-img-60 bk-border-off" />
-						</div>
-					</div>
-					<div class="bk-fg-inverse bk-margin-top-10">
-						<strong class="pull-right bk-fg-primary"><div
-								class="point point-success point-lg"></div>Robert</strong> <span><i
-							class="fa fa-clock-o"></i><small> 11' ago</small></span>
-					</div>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-						eget turpis pulvinar, tempor odio sed, adipiscing dolor.</p>
-				</a>
-				<hr class="bk-margin-off" />
-				<a
-					class="panel-body bk-bg-very-light-gray bk-bg-lighten bk-padding-off-top bk-padding-off-bottom">
-					<div class="pull-left bk-margin-top-10 bk-margin-right-10">
-						<div class="bk-avatar">
-							<img src="/assets/img/avatar1.jpg" alt=""
-								class="img-circle bk-img-60 bk-border-off" />
-						</div>
-					</div>
-					<div class="bk-fg-inverse bk-margin-top-10">
-						<strong class="bk-fg-primary"><div
-								class="point point-success point-lg"></div>John Doe</strong> <span
-							class="pull-right"><i class="fa fa-clock-o"></i><small>
-								6' ago</small></span>
-					</div>
-					<p>Cum sociis natoque pen ibus Mauris pede arcuats moles tied
-						Aliquam or Mauris pede arcuats</p>
-				</a>
-				<hr class="bk-margin-off" />
-				<a
-					class="panel-body bk-bg-very-light-gray bk-bg-lighten bk-padding-off-top bk-padding-off-bottom">
-					<div class="pull-right bk-margin-top-10 bk-margin-left-10">
-						<div class="bk-avatar">
-							<img src="/assets/img/avatar.jpg" alt=""
-								class="img-circle bk-img-60 bk-border-off" />
-						</div>
-					</div>
-					<div class="bk-fg-inverse bk-margin-top-10">
-						<strong class="pull-right bk-fg-primary"><div
-								class="point point-success point-lg"></div>Robert</strong> <span><i
-							class="fa fa-clock-o"></i><small> 11' ago</small></span>
-					</div>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-						eget turpis pulvinar, tempor odio sed, adipiscing dolor.</p>
-				</a>
-			</div>
-			<hr class="bk-margin-off" />
-			<div
-				class="panel-body bk-bg-white bk-padding-top-15 bk-padding-bottom-15">
-				<form role="form" action="javascript:">
-					<div class="input-group">
-						<input type="text" class="form-control bk-noradius" /> <span
-							class="input-group-btn">
-							<button class="btn btn-default bk-noradius" type="button">
-								<i class="fa fa-send-o"></i>
-							</button>
-						</span>
-					</div>
-				</form>
-			</div>
-		</div>
-		<div class="panel bk-widget bk-border-off bk-noradius">
-			<div
-				class="panel-body bk-bg-white bk-fg-inverse text-center bk-padding-15">
-				<div class="row">
-					<div class="col-xs-8 text-left bk-vcenter">
-						<div class="">
-							<h1 class="bk-margin-off">123K</h1>
-							DOWNLOAD
-						</div>
-					</div>
-					<div class="col-xs-4 bk-vcenter text-right">
-						<i class="fa fa-thumbs-o-up fa-3x"></i>
-					</div>
-				</div>
-				<div class="table-responsive">
-					<table class="table text-left bk-margin-off-bottom">
-						<thead>
-							<tr>
-								<th>Theme</th>
-								<th>Bounce rate</th>
-								<th>Last month</th>
-								<th></th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Wordpress</td>
-								<td>80,8%</td>
-								<td>75,265</td>
-								<td class="bk-padding-off-right">
-									<ul class="list-inline bk-margin-off-bottom text-right">
-										<li class="bk-padding-off-right"><a
-											class="bk-round bk-border-info bk-border-darken bk-bg-lighten bk-border-3x bk-icon bk-icon-default bk-bg-info"
-											data-toggle="tooltip" data-placement="top" title=""
-											data-original-title="Settings"> <i class="fa fa-cogs"></i>
-										</a></li>
-										<li class="bk-padding-off-right"><a
-											class="bk-round bk-border-info bk-border-darken bk-bg-lighten bk-border-3x bk-icon bk-icon-default bk-bg-info"
-											data-toggle="tooltip" data-placement="top" title=""
-											data-original-title="Edit"> <i class="fa fa-pencil"></i>
-										</a></li>
-										<li class="bk-padding-off-right"><a
-											class="bk-round bk-border-info bk-border-darken bk-bg-lighten bk-border-3x bk-icon bk-icon-default bk-bg-info"
-											data-toggle="tooltip" data-placement="top" title=""
-											data-original-title="View"> <i class="fa fa-eye"></i>
-										</a></li>
-									</ul>
-								</td>
-							</tr>
-							<tr>
-								<td>HTML</td>
-								<td>71,5%</td>
-								<td>60,269</td>
-								<td class="bk-padding-off-right">
-									<ul class="list-inline bk-margin-off-bottom text-right">
-										<li class="bk-padding-off-right"><a
-											class="bk-round bk-border-info bk-border-darken bk-bg-lighten bk-border-3x bk-icon bk-icon-default bk-bg-info"
-											data-toggle="tooltip" data-placement="top" title=""
-											data-original-title="Settings"> <i class="fa fa-cogs"></i>
-										</a></li>
-										<li class="bk-padding-off-right"><a
-											class="bk-round bk-border-info bk-border-darken bk-bg-lighten bk-border-3x bk-icon bk-icon-default bk-bg-info"
-											data-toggle="tooltip" data-placement="top" title=""
-											data-original-title="Edit"> <i class="fa fa-pencil"></i>
-										</a></li>
-										<li class="bk-padding-off-right"><a
-											class="bk-round bk-border-info bk-border-darken bk-bg-lighten bk-border-3x bk-icon bk-icon-default bk-bg-info"
-											data-toggle="tooltip" data-placement="top" title=""
-											data-original-title="View"> <i class="fa fa-eye"></i>
-										</a></li>
-									</ul>
-								</td>
-							</tr>
-							<tr>
-								<td>CMS</td>
-								<td>69,3%</td>
-								<td>53,026</td>
-								<td class="bk-padding-off-right">
-									<ul class="list-inline bk-margin-off-bottom text-right">
-										<li class="bk-padding-off-right"><a
-											class="bk-round bk-border-info bk-border-darken bk-bg-lighten bk-border-3x bk-icon bk-icon-default bk-bg-info"
-											data-toggle="tooltip" data-placement="top" title=""
-											data-original-title="Settings"> <i class="fa fa-cogs"></i>
-										</a></li>
-										<li class="bk-padding-off-right"><a
-											class="bk-round bk-border-info bk-border-darken bk-bg-lighten bk-border-3x bk-icon bk-icon-default bk-bg-info"
-											data-toggle="tooltip" data-placement="top" title=""
-											data-original-title="Edit"> <i class="fa fa-pencil"></i>
-										</a></li>
-										<li class="bk-padding-off-right"><a
-											class="bk-round bk-border-info bk-border-darken bk-bg-lighten bk-border-3x bk-icon bk-icon-default bk-bg-info"
-											data-toggle="tooltip" data-placement="top" title=""
-											data-original-title="View"> <i class="fa fa-eye"></i>
-										</a></li>
-									</ul>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-		<div class="panel bk-widget bk-border-off">
-			<div
-				class="panel-body bk-bg-white text-center bk-padding-top-10 bk-padding-bottom-10">
-				<div class="row">
-					<div class="col-xs-8 text-left bk-vcenter">
-						<h6 class="bk-margin-off">UPDATE ITEMS</h6>
-					</div>
-					<div class="col-xs-4 bk-vcenter text-right">
-						<i class="fa fa-file-text-o"></i>
-					</div>
-				</div>
-			</div>
-			<div
-				class="panel-body bk-bg-white bk-padding-off-top bk-padding-off-bottom">
-				<div class="row">
-					<div
-						class="col-lg-2 col-md-2 col-sm-2 col-xs-12 bk-vcenter bk-padding-top-10 bk-padding-bottom-10">
-						<a
-							class="bk-round bk-border-off bk-bg-danger bk-bg-lighten bk-icon bk-icon-2x bk-icon-default">
-							<i class="fa fa-trophy fa-2x"></i>
-						</a>
-					</div>
-					<div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 bk-vcenter">
-						<h6 class="bk-fg-danger bk-margin-off-bottom">
-							<strong>ONE PAGE</strong>
-						</h6>
-						<p>
-							<small>Donec nisi velit, malesuada id dolor non,
-								elementum auctor arcu. Cras consectetur sapien et purus posuere,
-								ac amel hendrerit nunc luctus.</small>
-						</p>
-					</div>
-					<hr class="bk-margin-off" />
-				</div>
-				<div class="row">
-					<div
-						class="col-lg-2 col-md-2 col-sm-2 col-xs-12 bk-vcenter bk-padding-top-10 bk-padding-bottom-10">
-						<a
-							class="bk-round bk-border-off bk-bg-primary bk-bg-lighten bk-icon bk-icon-2x bk-icon-default">
-							<i class="fa fa-star fa-2x"></i>
-						</a>
-					</div>
-					<div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 bk-vcenter">
-						<h6 class="bk-fg-primary bk-margin-off-bottom">
-							<strong>MULTIPURPOSE</strong>
-						</h6>
-						<p>
-							<small><a href="javascript:"
-								class="bk-fg-primary bk-fg-lighten">Donec nisi velit,
-									malesuada id dolor non, elementum auctor arcu. Cras consectetur
-									sapien et purus posuere, ac amel hendrerit nunc luctus.</small>
-						</p>
-					</div>
-				</div>
-				<div class="row">
-					<hr class="bk-margin-off" />
-					<div
-						class="col-lg-2 col-md-2 col-sm-2 col-xs-12 bk-vcenter bk-padding-top-10 bk-padding-bottom-10">
-						<a
-							class="bk-round bk-border-off bk-bg-lighten bk-icon bk-icon-2x bk-icon-default bk-bg-info">
-							<i class="fa fa-picture-o fa-2x"></i>
-						</a>
-					</div>
-					<div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 bk-vcenter">
-						<h6 class="bk-fg-info bk-margin-off-bottom">
-							<strong>PORTFOLIO</strong>
-						</h6>
-						<p>
-							<small>Donec nisi velit, malesuada id dolor non,
-								elementum auctor arcu. Cras consectetur sapien et purus posuere,
-								ac amel hendrerit nunc luctus.</small>
-						</p>
-					</div>
-				</div>
-				<div class="row">
-					<hr class="bk-margin-off" />
-					<div
-						class="col-lg-2 col-md-2 col-sm-2 col-xs-12 bk-vcenter bk-padding-top-10 bk-padding-bottom-10">
-						<a
-							class="bk-round bk-border-off bk-bg-lighten bk-icon bk-icon-2x bk-icon-default bk-bg-warning">
-							<i class="fa fa-signal fa-2x"></i>
-						</a>
-					</div>
-					<div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 bk-vcenter">
-						<h6 class="bk-fg-warning bk-margin-off-bottom">
-							<strong>ADMIN TEMPLATE</strong>
-						</h6>
-						<p>
-							<small>Donec nisi velit, malesuada id dolor non,
-								elementum auctor arcu. Cras consectetur sapien et purus posuere,
-								ac amel hendrerit nunc luctus.</small>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div
-				class="panel-body bk-bg-very-light-gray bk-padding-top-5 bk-padding-bottom-5 ">
-				<div class="row">
-					<div class="col-xs-6">
-						<a href="#" class="bk-fg-textcolor"><small><i
-								class="fa fa-angle-left"></i> PREVIOUS</small></a>
-					</div>
-					<div class="col-xs-6 text-right">
-						<a href="#" class="bk-fg-textcolor"><small>NEXT <i
-								class="fa fa-angle-right"></i></small></a>
 					</div>
 				</div>
 			</div>
@@ -872,3 +417,7 @@
 	</div>
 </div>
 
+<script src="/assets/plugins/wizard/js/jquery.bootstrap.wizard.min.js"></script>
+<script src="/assets/plugins/maskedinput/js/jquery.maskedinput.js"></script>
+<script src="/assets/plugins/chosen/js/chosen.jquery.min.js"></script>
+<script src="/assets/js/pages/form-wizard.js"></script>

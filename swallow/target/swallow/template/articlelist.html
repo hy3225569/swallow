@@ -67,20 +67,18 @@
 			<div class="panel-body">
 				<div class="col-md-12">
 					<ul class="messages-list">
-					 <li class="unread" ng-repeat="article in articlelist">
-						<a href="#/article">
-								<div class="header">
-									<span class="checkbox-custom"> <input type="checkbox">
-										<label for="mailInbox"></label>
-									</span> <span class="from">何毅</span> <span
-										class="date"> Today, 08:45 AM</span>
-								</div>
+						<li class="unread" ng-repeat="article in articlelist">
+							<div class="header">
+								<span class="checkbox-custom"> <input type="checkbox">
+									<label for="mailInbox"></label>
+								</span> <span class="from">何毅</span> <span class="date"> {{article.releaseTime}}</span>
+							</div> <a href="#/article/{{article.articleId}}">
 								<div class="title">
 									<span class="action"><i class="fa fa-star"></i></span>{{article.title}}
 								</div>
 								<div class="description">{{article.discreption}}</div>
-						</a>
-					 </li>
+						     </a>
+						</li>
 					</ul>
 				</div>
 			</div>

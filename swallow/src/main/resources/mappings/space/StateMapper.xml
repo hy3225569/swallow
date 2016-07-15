@@ -14,4 +14,14 @@
        <insert id="insertState" parameterType="com.sea.swallow.model.StateModel">
          INSERT  into tb_state (state_id,content,release_time) VALUES (#{stateId},#{content},now())
        </insert>
+       <select id="selectFriendStateList" parameterType="map" resultType="com.sea.swallow.model.FriendStateModel">
+		select a.content,date_format(a.release_time,'%Y-%m-%d %H:%i:%s')
+		releaseTime,a.state_id
+		stateId,b.user_id userId,c.nick_name
+		friendNickName,c.head_img headImg from tb_state a INNER JOIN
+		tb_activity b ON b.action_id=a.state_id
+		LEFT JOIN tb_user c on c.user_id=b.user_id
+		where c.be_deleted=0 and b.user_id IN (SELECT friend_id FROM
+		tb_user_relation WHERE user_id=#{userId})   
+       </select>
 </mapper>

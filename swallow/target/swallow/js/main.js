@@ -12,7 +12,9 @@ require.config({
 				'login':'/js/controller/user/logincontroller',
 				'sweet-alert':'/assets/plugins/sweet-alert/js/sweet-alert.min',
 				'ckeditor':'/assets/ckeditor/ckeditor',
-				'ckeditordc':'/js/directive/ckeditordc'
+				'ckeditordc':'/js/directive/ckeditordc',
+				'checklist':'/js/directive/checklist',
+				'ngsanitize':'/js/angular-1.5.6/angular-sanitize.min'
     },
     shim: {
     	'angular':{
@@ -23,8 +25,7 @@ require.config({
         },
         'angular-route': {
             deps: ['angular']
-        }
-       
+        }  
     }
 });
 

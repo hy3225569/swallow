@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sea.swallow.dal.CommentMapper">
+	<select id="selectCommentList" parameterType="Integer"
+		resultType="com.sea.swallow.model.CommentModel">
+		select t1.conmment_time commentTime,t1.user_id userId, t1.action_id
+		actionId, t1.comment_content commentContent,t1.comment_id commentId
+		,t2.head_img headImg,t2.nick_name nickName from tb_evaluation t1 LEFT
+		JOIN tb_user t2 ON t1.user_id=t2.user_id
+		<where>
+			1=1
+			<if test="actionId!=null">
+				and t1.action_id=#{actionId}
+			</if>
+		</where>
+	</select>
+	<insert id="insertComment" parameterType="com.sea.swallow.model.CommentModel">
+		INSERT INTO tb_evaluation (comment_content,user_id,conmment_time,action_id)
+		VALUES (#{commentContent},#{userId},now(),#{actionId})
+	</insert>
+</mapper>

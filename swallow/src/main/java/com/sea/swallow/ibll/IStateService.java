@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.sea.swallow.model.FriendStateModel;
 import com.sea.swallow.model.ResultInfo;
 import com.sea.swallow.model.StateModel;
 
@@ -21,4 +22,10 @@ public interface IStateService {
      * @return
      */
 	ResultInfo<String> updateStatus(HttpServletRequest request);
+	
+	/**
+	 * 查询好友动态
+	 * @return
+	 */
+	ResultInfo<List<FriendStateModel>> getFriendStatusList(Map<String,Object> map);
 }

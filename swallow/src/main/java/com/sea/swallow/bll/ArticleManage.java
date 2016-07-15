@@ -1,7 +1,6 @@
 package com.sea.swallow.bll;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -14,9 +13,11 @@ import com.sea.swallow.common.JsonUtils;
 import com.sea.swallow.common.StringUtils;
 import com.sea.swallow.dal.ActivityMapper;
 import com.sea.swallow.dal.ArticleMapper;
+import com.sea.swallow.dal.CommentMapper;
 import com.sea.swallow.ibll.IArticleManage;
 import com.sea.swallow.model.ActivityModel;
 import com.sea.swallow.model.ArticleModel;
+import com.sea.swallow.model.FriendArticleModel;
 import com.sea.swallow.model.ResultInfo;
 import com.sea.swallow.model.UserModel;
 
@@ -28,6 +29,9 @@ public class ArticleManage implements IArticleManage {
     
 	@Resource(name="activityMapper")
 	private ActivityMapper activityMapper;
+	
+	@Resource(name="commentMapper")
+	private CommentMapper commentMapper;
 	/**
 	 * 写文章
 	 */
@@ -89,6 +93,26 @@ public class ArticleManage implements IArticleManage {
 			return new ResultInfo<List<ArticleModel>>(0,"",new ArrayList<ArticleModel>());
 		}
 		
+	}
+
+	/**
+	 * 根据条件获取博文列表
+	 */
+	@Override
+	public ResultInfo<List<FriendArticleModel>> getFriendArticleList(Map<String, Object> map) {
+		try {
+			List<FriendArticleModel> list= articleMapper.selectFriendArticleList(map);
+			for (FriendArticleModel friendArticleModel : list) {
+				friendArticleModel.setComment(commentMapper.selectCommentList(Integer.valueOf(friendArticleModel.getArticleId().toString())));
+			}
+			if(list!=null && !list.isEmpty())
+			{
+				return new ResultInfo<List<FriendArticleModel>>(0,"",list);
+			}
+			return new ResultInfo<List<FriendArticleModel>>(0,"",null);
+		} catch (Exception e) {
+			return new ResultInfo<List<FriendArticleModel>>(0,"",null);
+		}
 	}
 
 }
